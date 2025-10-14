@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 5146708710695260976}
   - component: {fileID: 5246460029864258940}
   - component: {fileID: 709236242983000899}
+  - component: {fileID: 4992169396427368121}
   - component: {fileID: -4722019390310618335}
+  - component: {fileID: 4087025207381619808}
   m_Layer: 0
   m_Name: blueSmile
   m_TagString: Untagged
@@ -184,6 +186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPathfinding
   moveSpeed: 2
+--- !u!114 &4992169396427368121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648784003874999864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592a28f332ca35d4083edfdc57796ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Knockback
+  knockBackTime: 0.2
 --- !u!114 &-4722019390310618335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +212,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   startingHealth: 3
+--- !u!114 &4087025207381619808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648784003874999864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c154335faa5b7b04fbbc51bc08b1a626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Flash
+  whiteFlashMat: {fileID: 2100000, guid: 8f0a3cfeba777db42ac6a6fa526bcbc9, type: 2}
+  restoreDefaultMatTime: 0.2

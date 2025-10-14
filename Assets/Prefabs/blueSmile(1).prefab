@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7167457477556695861}
   - component: {fileID: 1276921796922258002}
   - component: {fileID: 274189747959609096}
+  - component: {fileID: -4873215134022847306}
   m_Layer: 0
   m_Name: blueSmile(1)
   m_TagString: Untagged
@@ -183,3 +184,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPathfinding
   moveSpeed: 2
+--- !u!114 &-4873215134022847306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763726351936625674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea58e68eafda0f048a84d24663b2bdbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  startingHealth: 3

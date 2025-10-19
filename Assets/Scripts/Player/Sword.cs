@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Sword : MonoBehaviour
 {
@@ -15,69 +16,89 @@ public class Sword : MonoBehaviour
 
     private GameObject slashAnim;
 
-    private void Awake() {
+    private void Awake()
+    {
         playerController = GetComponentInParent<PlayerController>();
         activeWeapon = GetComponentInParent<ActiveWeapon>();
         myAnimator = GetComponent<Animator>();
         playerControls = new PlayerControls();
     }
 
-    private void OnEnable() {
-        playerControls.Enable();
-    }
-
-    void Start()
+    private void OnEnable()
     {
-        playerControls.Combat.Attack.started += _ => Attack();
+        playerControls.Enable();
+        playerControls.Combat.Attack.started += OnAttack;
     }
 
-    private void Update() {
+    private void OnDisable()
+    {
+        playerControls.Combat.Attack.started -= OnAttack;
+        playerControls.Disable();
+    }
+
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        Attack();
+    }
+
+    private void Update()
+    {
         MouseFollowWithOffset();
     }
 
-    private void Attack() {
+    private void Attack()
+    {
+        if (myAnimator == null) return; // ✅ Kiểm tra an toàn
         myAnimator.SetTrigger("Attack");
-        weaponCollider.gameObject.SetActive(true);
+
+        if (weaponCollider != null)
+            weaponCollider.gameObject.SetActive(true);
 
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
         slashAnim.transform.parent = this.transform.parent;
     }
 
-    public void DoneAttackingAnimEvent(){
-        weaponCollider.gameObject.SetActive(false);
+    public void DoneAttackingAnimEvent()
+    {
+        if (weaponCollider != null)
+            weaponCollider.gameObject.SetActive(false);
     }
 
-    public void SwingUpFlipAnimEvent() {
+    public void SwingUpFlipAnimEvent()
+    {
         if (slashAnim == null) return;
-        slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
+        slashAnim.transform.rotation = Quaternion.Euler(-180, 0, 0);
 
-        if (playerController.FacingLeft) { 
+        if (playerController != null && playerController.FacingLeft)
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
-        }
     }
 
-    public void SwingDownFlipAnimEvent() {
+    public void SwingDownFlipAnimEvent()
+    {
         if (slashAnim == null) return;
-        slashAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        slashAnim.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if (playerController.FacingLeft)
-        {
+        if (playerController != null && playerController.FacingLeft)
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
-        }
     }
 
-    private void MouseFollowWithOffset() {
+    private void MouseFollowWithOffset()
+    {
+        if (playerController == null || activeWeapon == null) return;
+
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(playerController.transform.position);
-
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
-        if (mousePos.x < playerScreenPoint.x) {
+        if (mousePos.x < playerScreenPoint.x)
+        {
             activeWeapon.transform.rotation = Quaternion.Euler(0, -180, angle);
-            weaponCollider.transform.rotation = Quaternion.Euler(0,-180,0);
-        } else {
+            weaponCollider.transform.rotation = Quaternion.Euler(0, -180, 0);
+        }
+        else
+        {
             activeWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
-            weaponCollider.transform.rotation = Quaternion.Euler(0,0,0);
+            weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

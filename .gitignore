@@ -28,3 +28,5 @@ Recordings/
 *.apk
 *.aab
 *.unitypackage
+
+.fake

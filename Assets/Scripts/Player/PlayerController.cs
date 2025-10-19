@@ -36,9 +36,24 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void OnEnable() {
-        playerControls.Enable();
+        if (playerControls == null)
+        playerControls = new PlayerControls();
+
+    playerControls.Enable();
+
+    // Đăng ký sự kiện khi bật object
+    playerControls.Combat.Dash.performed += OnDashPerformed;
+    }
+    
+    private void OnDisable() {
+        // Hủy đăng ký khi tắt object (tránh MissingReferenceException)
+        playerControls.Combat.Dash.performed -= OnDashPerformed;
+        playerControls.Disable();
     }
 
+    private void OnDashPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context) {
+        Dash();
+    }
     private void Update() {
         PlayerInput();
     }

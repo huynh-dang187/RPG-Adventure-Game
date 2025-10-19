@@ -46,10 +46,10 @@ public class PlayerController : Singleton<PlayerController>
     }
     
     private void OnDisable() {
-        // Hủy đăng ký khi tắt object (tránh MissingReferenceException)
-        playerControls.Combat.Dash.performed -= OnDashPerformed;
+    if (playerControls != null)
         playerControls.Disable();
-    }
+}
+
 
     private void OnDashPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context) {
         Dash();

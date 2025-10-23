@@ -121,6 +121,78 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Inventory",
+            "id": "70282ceb-5dc5-4196-97e1-1b4b185d99c9",
+            "actions": [
+                {
+                    "name": "Keyboard",
+                    "type": "Value",
+                    "id": "a121f751-ef3b-4703-8959-332f62568a31",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f7e9492-2ff9-40c3-a930-0c22641219e9",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8feaf6d-f0af-44d0-9584-69014efcf078",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d83559a8-337b-4e13-a4ca-c70571fdb2a5",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81defed0-5baa-4319-94ad-44207015cfab",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08cded2f-0da1-4ceb-a906-be4c3c3766b7",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "Scale(factor=5)",
+                    "groups": "",
+                    "action": "Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -1,4 +1,3 @@
-interface IWeapon
-{
+interface IWeapon {
     public void Attack();
 }

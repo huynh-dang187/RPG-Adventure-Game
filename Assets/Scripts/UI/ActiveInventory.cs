@@ -1,75 +1,62 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem; // nếu dùng Input System package
 
 public class ActiveInventory : MonoBehaviour
 {
     private int activeSlotIndexNum = 0;
+
     private PlayerControls playerControls;
 
-    private void Awake()
-    {
+    private void Awake() {
         playerControls = new PlayerControls();
     }
 
-    private void OnEnable()
-    {
+    private void Start() {
+        playerControls.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
+
+        ToggleActiveHighlight(0);
+    }
+
+    private void OnEnable() {
         playerControls.Enable();
-        // đăng ký sự kiện ở OnEnable
-        playerControls.Inventory.Keyboard.performed += OnInventoryInput;
     }
 
-    private void OnDisable()
-    {
-        // hủy đăng ký và disable controls
-        playerControls.Inventory.Keyboard.performed -= OnInventoryInput;
-        playerControls.Disable();
+    private void ToggleActiveSlot(int numValue) {
+        ToggleActiveHighlight(numValue - 1);
     }
 
-    // Input callback tách riêng cho rõ ràng
-    private void OnInventoryInput(InputAction.CallbackContext ctx)
-    {
-        // đọc giá trị float rồi chuyển sang int
-        int value = (int)ctx.ReadValue<float>();
-        ToggleActiveSlot(value);
-    }
-
-    private void ToggleActiveSlot(int numValue)
-    {
-        // nếu mapping của bạn là phím số 1..n và bạn muốn index 0-based:
-        int index = numValue - 1;
-        ToggleActiveHighlight(index);
-    }
-
-    private void ToggleActiveHighlight(int indexNum)
-    {
-        // kiểm tra bounds để tránh lỗi
-        int childCount = transform.childCount;
-        if (indexNum < 0 || indexNum >= childCount)
-        {
-            Debug.LogWarning($"Index {indexNum} ngoài phạm vi (0..{childCount - 1}).");
-            return;
-        }
-
+    private void ToggleActiveHighlight(int indexNum) {
         activeSlotIndexNum = indexNum;
 
-        // vòng lặp qua từng child (Transform)
-        foreach (Transform inventorySlot in transform)
+        foreach (Transform inventorySlot in this.transform)
         {
-            // đảm bảo child có ít nhất 1 child con trước khi GetChild(0)
-            if (inventorySlot.childCount > 0)
-                inventorySlot.GetChild(0).gameObject.SetActive(false);
+            inventorySlot.GetChild(0).gameObject.SetActive(false);
         }
 
-        // Bật highlight cho slot được chọn (cũng kiểm tra childCount)
-        Transform selectedSlot = transform.GetChild(indexNum);
-        if (selectedSlot.childCount > 0)
-            selectedSlot.GetChild(0).gameObject.SetActive(true);
+        this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
 
         ChangeActiveWeapon();
     }
 
-    private void ChangeActiveWeapon()
-    {
-        Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab.name);
+    private void ChangeActiveWeapon() {
+
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null) {
+            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
+
+        if (!transform.GetChild(activeSlotIndexNum).GetComponentInChildren<InventorySlot>()) {
+            ActiveWeapon.Instance.WeaponNull();
+            return;
+        }
+
+        GameObject weaponToSpawn = transform.GetChild(activeSlotIndexNum).
+        GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
+
+        GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
+
+        newWeapon.transform.parent = ActiveWeapon.Instance.transform;
+
+        ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());
     }
 }

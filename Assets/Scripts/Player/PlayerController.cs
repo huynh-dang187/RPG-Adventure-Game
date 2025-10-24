@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    public bool FacingLeft {get {return facingLeft;}}
+    public bool FacingLeft { get { return facingLeft; } }
     
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
-    [SerializeField] private TrailRenderer myTrailRenderer ;
+    [SerializeField] private TrailRenderer myTrailRenderer;
+    [SerializeField] private Transform weaponCollider;
 
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;
-    private float startingMoveSpeed ;
+    private float startingMoveSpeed;
 
     private bool facingLeft = false;
-    private bool isDashing = false ;
+    private bool isDashing = false;
 
-    protected override void Awake(){
+    protected override void Awake() {
         base.Awake();
 
         playerControls = new PlayerControls();
@@ -30,30 +31,16 @@ public class PlayerController : Singleton<PlayerController>
         mySpriteRender = GetComponent<SpriteRenderer>();
     }
 
-    private void Start(){
+    private void Start() {
         playerControls.Combat.Dash.performed += _ => Dash();
-        startingMoveSpeed = moveSpeed; 
+
+        startingMoveSpeed = moveSpeed;
     }
 
     private void OnEnable() {
-        if (playerControls == null)
-        playerControls = new PlayerControls();
-
-    playerControls.Enable();
-
-    // Đăng ký sự kiện khi bật object
-    playerControls.Combat.Dash.performed += OnDashPerformed;
+        playerControls.Enable();
     }
-    
-    private void OnDisable() {
-    if (playerControls != null)
-        playerControls.Disable();
-}
 
-
-    private void OnDashPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context) {
-        Dash();
-    }
     private void Update() {
         PlayerInput();
     }
@@ -61,6 +48,10 @@ public class PlayerController : Singleton<PlayerController>
     private void FixedUpdate() {
         AdjustPlayerFacingDirection();
         Move();
+    }
+
+    public Transform GetWeaponCollider() {
+        return weaponCollider;
     }
 
     private void PlayerInput() {
@@ -87,22 +78,22 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void Dash(){
-        if(!isDashing){
-            isDashing = true ;
-            moveSpeed *= dashSpeed ;
-            myTrailRenderer.emitting = true ;
+    private void Dash() {
+        if (!isDashing) {
+            isDashing = true;
+            moveSpeed *= dashSpeed;
+            myTrailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
         }
     }
-    
-    private IEnumerator EndDashRoutine(){
+
+    private IEnumerator EndDashRoutine() {
         float dashTime = .2f;
-        float dashCD = .25f ;
+        float dashCD = .25f;
         yield return new WaitForSeconds(dashTime);
         moveSpeed = startingMoveSpeed;
-        myTrailRenderer.emitting = false ;
+        myTrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
-        isDashing = false ;
+        isDashing = false;
     }
 }

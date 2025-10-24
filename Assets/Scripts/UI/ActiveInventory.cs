@@ -64,5 +64,12 @@ public class ActiveInventory : MonoBehaviour
         Transform selectedSlot = transform.GetChild(indexNum);
         if (selectedSlot.childCount > 0)
             selectedSlot.GetChild(0).gameObject.SetActive(true);
+
+        ChangeActiveWeapon();
+    }
+
+    private void ChangeActiveWeapon()
+    {
+        Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab.name);
     }
 }

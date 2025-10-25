@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3804094257635822744}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: -0.7200667, w: -0.6939049}
-  m_LocalPosition: {x: 0.53, y: 0.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.4853, y: 0.9445, z: 0}
+  m_LocalScale: {x: 0.67334896, y: 0.88603246, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 37fd82acd86ebb943a14145c8f6c9b29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b5c04aa00509a14ba34f9da0248b248, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.125, y: 1}
+  m_Size: {x: 1.875, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,5 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sword
   slashAnimPrefab: {fileID: 7348091203871001760, guid: 27f0fabeba54e3a4ea78443fae278358, type: 3}
-  swordAttackCD: 1
   slashAnimSpawnPoint: {fileID: 0}
+  swordAttackCD: 1

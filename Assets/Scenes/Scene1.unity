@@ -8679,7 +8679,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16476238, y: 1.96116, z: -10}
+  m_LocalPosition: {x: 3.13379, y: 0.32263994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9686,7 +9686,7 @@ Transform:
   m_GameObject: {fileID: 991533929}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0043899, y: 0.61914194, z: -9.964847}
+  m_LocalPosition: {x: 2.93379, y: -1.0123581, z: -9.964847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11300,7 +11300,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1925417606565882268, guid: 7943b80ead2e1754ab7d7412f4e13605, type: 3}
+  m_Sprite: {fileID: 8943998719802223876, guid: d72139e8cd64c4e40a99b3506ce89132, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11320,8 +11320,8 @@ Transform:
   m_GameObject: {fileID: 1616431774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.07, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.9994, y: -1.6315, z: 0}
+  m_LocalScale: {x: 0.9711008, y: 0.9735752, z: 0.78145534}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1271707949}
@@ -11385,8 +11385,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.024671074, y: -0.44886166}
-  m_Size: {x: 0.736149, y: 0.41545445}
+  m_Offset: {x: -0.05390854, y: 0.21167932}
+  m_Size: {x: 1.4707248, y: 1.4707248}
   m_Direction: 1
 --- !u!114 &1616431781
 MonoBehaviour:
@@ -11400,8 +11400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ce6729073fdfe459af09259a0cecef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 4
-  dashSpeed: 4
+  moveSpeed: 2.5
+  dashSpeed: 5
   myTrailRenderer: {fileID: 5932943}
   weaponCollider: {fileID: 1513880930}
 --- !u!210 &1616431782

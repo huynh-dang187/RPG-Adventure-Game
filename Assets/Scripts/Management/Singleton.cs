@@ -7,17 +7,15 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     private static T instance;
     public static T Instance { get { return instance; } }
 
-    protected virtual void Awake()
-{
-    if (instance != null && instance != this)
-    {
-        // Chỉ hủy sau frame này để tránh OnDisable() bị gọi giữa lúc khởi tạo
-        Destroy(gameObject, 0.01f);
-        return;
+    protected virtual void Awake() {
+        if (instance != null && this.gameObject != null) {
+            Destroy(this.gameObject);
+        } else {
+            instance = (T)this;
+        }
+
+        if (!gameObject.transform.parent) {
+            DontDestroyOnLoad(gameObject);
+        }
     }
-
-    instance = (T)this;
-    DontDestroyOnLoad(gameObject);
-}
-
 }

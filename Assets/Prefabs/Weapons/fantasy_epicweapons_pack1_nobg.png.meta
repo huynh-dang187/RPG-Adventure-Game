@@ -795,11 +795,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 129
-        y: 64
-        width: 31
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 65
+        width: 29
+        height: 28
+      alignment: 9
+      pivot: {x: 0.99942803, y: 0.9882638}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -817,11 +817,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 161
-        y: 63
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 64
+        width: 31
+        height: 31
+      alignment: 9
+      pivot: {x: 0.32364777, y: 0.28299737}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -838,10 +838,10 @@ TextureImporter:
       name: fantasy_epicweapons_pack1_nobg_26
       rect:
         serializedVersion: 2
-        x: 191
-        y: 66
-        width: 34
-        height: 29
+        x: 193
+        y: 69
+        width: 32
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

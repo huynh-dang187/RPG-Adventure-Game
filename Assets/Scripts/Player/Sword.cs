@@ -7,6 +7,8 @@ public class Sword : MonoBehaviour, IWeapon
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
     [SerializeField] private float swordAttackCD = .5f;
+    [SerializeField] private WeaponInfo weaponInfo;
+
 
     private Transform weaponCollider;
     private Animator myAnimator;
@@ -34,24 +36,27 @@ public class Sword : MonoBehaviour, IWeapon
             myAnimator.Rebind();
     }
 
-    private void Update() {
+    private void Update()
+    {
         MouseFollowWithOffset();
     }
 
-    public void Attack() {
+    public WeaponInfo GetWeaponInfo()
+    {
+        return weaponInfo;
+    }
+    
+    public void Attack()
+    {
         Debug.Log($"Sword.Attack() được gọi - trạng thái: {gameObject.activeSelf}");
 
         myAnimator.SetTrigger("Attack");
         weaponCollider.gameObject.SetActive(true);
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
         slashAnim.transform.parent = this.transform.parent;
-        StartCoroutine(AttackCDRoutine());
+        
     }
 
-    private IEnumerator AttackCDRoutine() {
-        yield return new WaitForSeconds(swordAttackCD);
-        ActiveWeapon.Instance.ToggleIsAttacking(false);
-    }
 
     public void DoneAttackingAnimEvent() {
         weaponCollider.gameObject.SetActive(false);

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6852185267100408212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2332094349508828961}
+  m_Layer: 0
+  m_Name: Arrow Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2332094349508828961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852185267100408212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.47, y: -0.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2019411419299264331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8601913303527925504
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,13 +58,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8601913303527925504}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.39325202, w: 0.91943073}
-  m_LocalPosition: {x: 9.731669, y: 4.0320745, z: 0}
-  m_LocalScale: {x: 0.49373806, y: 0.45973575, z: 0.36162645}
+  m_LocalRotation: {x: 0, y: 0, z: -0.0016929582, w: 0.9999986}
+  m_LocalPosition: {x: 9.7417, y: 4.2428, z: 0}
+  m_LocalScale: {x: 0.7773081, y: 0.7285485, z: 0.63143295}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2332094349508828961}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 46.314}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.194}
 --- !u!212 &8660959420559164821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -81,12 +113,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3926705167094477727, guid: 769e3eedcebb7114894445bf8aa2d9e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 711108a6dce3a8942aba18d7c90ffde8, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 1.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,3 +159,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bow
   weaponInfo: {fileID: 11400000, guid: 71448e9f385004749988a4e9a0fdc893, type: 2}
+  arrowPrefab: {fileID: 2510084789941426431, guid: db5a1d461fd34d74684972aa6c2eb26f, type: 3}
+  arrowSpawnPoint: {fileID: 2332094349508828961}

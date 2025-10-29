@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponInfo
   weaponPrefab: {fileID: 3804094257635822744, guid: 31df02d411f5d584582c5c40ca925ea5, type: 3}
   weaponCooldown: 0.5
+  weaponRange: 0
+  weaponDamage: 1

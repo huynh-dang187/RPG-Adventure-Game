@@ -7,4 +7,9 @@ public class WeaponInfo : ScriptableObject
 {
     public GameObject weaponPrefab;
     public float weaponCooldown;
+<<<<<<< HEAD
+=======
+    public float weaponRange;
+    public int weaponDamage;
+>>>>>>> main
 }

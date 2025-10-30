@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08610543f7ab1bc4a8a20b90d388bf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  roamChangeDirFloat: 2
 --- !u!114 &709236242983000899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   startingHealth: 3
   deathVFXPrefab: {fileID: 5113080923070081056, guid: 4750ad430323f4a41a970be1ea53c917, type: 3}
+  knockBackThrust: 15
 --- !u!114 &4087025207381619808
 MonoBehaviour:
   m_ObjectHideFlags: 0

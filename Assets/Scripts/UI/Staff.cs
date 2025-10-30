@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class Staff : MonoBehaviour, IWeapon
 {
-
     [SerializeField] private WeaponInfo weaponInfo;
-    private void Update()
-    {
+    [SerializeField] private GameObject magicLaser;
+    [SerializeField] private Transform magicLaserSpawnPoint;
+
+    private Animator myAnimator;
+
+    readonly int AttackHash = Animator.StringToHash("Attack");
+
+    private void Awake() {
+        myAnimator = GetComponent<Animator>();
+    }
+
+    private void Update() {
         MouseFollowWithOffset();
     }
-    public void Attack()
+
+
+    public void Attack() {
+        myAnimator.SetTrigger(AttackHash);
+    }
+
+    public void SpawnStaffProjectileAnimEvent() {
+        GameObject newLaser = Instantiate(magicLaser, magicLaserSpawnPoint.position, Quaternion.identity);
+    }
+
+    public WeaponInfo GetWeaponInfo()
     {
-        Debug.Log("Staff Attack");
+        return weaponInfo;
     }
 
     private void MouseFollowWithOffset()
@@ -21,18 +40,14 @@ public class Staff : MonoBehaviour, IWeapon
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
 
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+
         if (mousePos.x < playerScreenPoint.x)
         {
             ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, -180, angle);
-
         }
         else
         {
             ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
-    }
-    public WeaponInfo GetWeaponInfo()
-    {
-        return weaponInfo;
     }
 }

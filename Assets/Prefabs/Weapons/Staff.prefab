@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6312948156723098925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14, y: 1.43, z: 0}
+  m_LocalPosition: {x: 0.88, y: 1.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,7 +58,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.73, y: 1.47, z: 0}
-  m_LocalScale: {x: 1.8379956, y: 1.9428984, z: 2.5399582}
+  m_LocalScale: {x: 1.8379956, y: 1.9428982, z: 2.539958}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5674045379209816908}
@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 4110780493487027399}
   - component: {fileID: -7676631784524567856}
   - component: {fileID: 5745966310662555943}
-  - component: {fileID: -7948265576354031526}
   m_Layer: 0
   m_Name: Staff
   m_TagString: Untagged
@@ -171,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Staff
   weaponInfo: {fileID: 11400000, guid: 2cc30dd99e0586d4a9fd6ec66475ecd3, type: 2}
-  magicLaser: {fileID: 0}
+  magicLaser: {fileID: 9131040794171645674, guid: 1e37ea35fc5faaf4eaf52cbb339ebfae, type: 3}
   magicLaserSpawnPoint: {fileID: 5906189973882421963}
 --- !u!212 &-7676631784524567856
 SpriteRenderer:
@@ -253,18 +252,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7948265576354031526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7706247648251144920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa48f499e47d4764e8484da47830e29f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Staff
-  weaponInfo: {fileID: 11400000, guid: 2cc30dd99e0586d4a9fd6ec66475ecd3, type: 2}
-  magicLaser: {fileID: 9131040794171645674, guid: 1e37ea35fc5faaf4eaf52cbb339ebfae, type: 3}
-  magicLaserSpawnPoint: {fileID: 5906189973882421963}

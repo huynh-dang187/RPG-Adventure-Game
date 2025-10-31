@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: aa48f499e47d4764e8484da47830e29f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - weaponInfo: {fileID: 11400000, guid: 2cc30dd99e0586d4a9fd6ec66475ecd3, type: 2}
+  - magicLaser: {fileID: 9131040794171645674, guid: 1e37ea35fc5faaf4eaf52cbb339ebfae, type: 3}
+  - magicLaserSpawnPoint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

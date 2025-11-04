@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [Header("Projectile Settings")]
     [SerializeField] private float moveSpeed = 22f;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
+    [SerializeField] private bool isEnemyProjectile = false;
+    [SerializeField] private float projectileRange = 10f;
 
-    private WeaponInfo weaponInfo;
     private Vector3 startPosition;
 
-    private void Start()
-    {
+    private void Start() {
         startPosition = transform.position;
     }
 
@@ -22,64 +21,31 @@ public class Projectile : MonoBehaviour
         DetectFireDistance();
     }
 
-    // Nhận thông tin vũ khí (damage, range,...)
-    public void UpdateWeaponInfo(WeaponInfo weaponInfo)
-    {
-        this.weaponInfo = weaponInfo;
+    public void UpdateProjectileRange(float projectileRange){
+        this.projectileRange = projectileRange;
     }
 
-    // Khi đạn va chạm
-    private void OnTriggerEnter2D(Collider2D other)
-{
-    // Nếu là Player thì bỏ qua (tránh tự bắn chính mình)
-    if (other.CompareTag("Player"))
-        return;
+    private void OnTriggerEnter2D(Collider2D other) {
+        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+        Indestructible indestructible = other.gameObject.GetComponent<Indestructible>();
+        PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
 
-    if (other.isTrigger) 
-        return;
+        if (!other.isTrigger && (enemyHealth || indestructible || player)) {
+            if (player && isEnemyProjectile) {
+                player.TakeDamage(1, transform);
+            }
 
-    EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-    Indestructible indestructible = other.GetComponent<Indestructible>();
-
-    // ✅ Gây damage cho enemy
-    if (enemyHealth != null)
-    {
-        enemyHealth.TakeDamage(weaponInfo.weaponDamage);
-        Debug.Log($"🔥 Projectile hit enemy: {other.name}, dealt {weaponInfo.weaponDamage} damage.");
-    }
-
-    // Nếu trúng vật thể không phá được
-    if (indestructible != null)
-    {
-        Debug.Log($"💥 Projectile hit indestructible object: {other.name}");
-    }
-
-    // Spawn hiệu ứng va chạm
-    if (particleOnHitPrefabVFX != null)
-    {
-        Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-    }
-
-    // ✅ Chỉ hủy đạn nếu trúng enemy hoặc vật cản
-    if (enemyHealth != null || indestructible != null)
-    {
-        Destroy(gameObject);
-    }
-}
-
-
-    // Hủy đạn nếu bay quá xa
-    private void DetectFireDistance()
-    {
-        if (weaponInfo == null) return;
-
-        if (Vector3.Distance(transform.position, startPosition) > weaponInfo.weaponRange)
-        {
+            Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
 
-    // Di chuyển viên đạn
+    private void DetectFireDistance() {
+        if (Vector3.Distance(transform.position, startPosition) > projectileRange) {
+            Destroy(gameObject);
+        }
+    }
+
     private void MoveProjectile()
     {
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);

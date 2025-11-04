@@ -133,8 +133,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.028587699, y: -0.011851013}
-  m_Size: {x: 0.85745597, y: 0.8574561}
+  m_Offset: {x: -0.032535683, y: 0.0050739013}
+  m_Size: {x: 1.2855139, y: 1.2855139}
   m_Direction: 0
 --- !u!50 &5146708710695260976
 Rigidbody2D:
@@ -179,7 +179,7 @@ MonoBehaviour:
   attackRange: 5
   enemyType: {fileID: 615196408195135996}
   attackCooldown: 3
-  stopMovingWhileAttack: 1
+  stopMovingWhileAttacking: 1
 --- !u!114 &709236242983000899
 MonoBehaviour:
   m_ObjectHideFlags: 0

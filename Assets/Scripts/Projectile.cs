@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -32,17 +31,14 @@ public class Projectile : MonoBehaviour
         PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
 
         if (!other.isTrigger && (enemyHealth || indestructible || player)) {
-            if ((player && isEnemyProjectile)||(enemyHealth && !isEnemyProjectile)) {
+            if ((player && isEnemyProjectile) || (enemyHealth && !isEnemyProjectile)) {
                 player?.TakeDamage(1, transform);
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
                 Destroy(gameObject);
-            }else if (!other.isTrigger && indestructible){
+            } else if (!other.isTrigger && indestructible) {
                 Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
-
-            Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-            Destroy(gameObject);
         }
     }
 

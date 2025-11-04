@@ -154,8 +154,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.011170528, y: 0.02462529}
-  m_Radius: 0.28335744
+  m_Offset: {x: 0.0010347159, y: -0.008135318}
+  m_Radius: 0.2759891
 --- !u!114 &1670036260510181887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,4 +171,4 @@ MonoBehaviour:
   moveSpeed: 8
   particleOnHitPrefabVFX: {fileID: 5113080923070081056, guid: 9d046658ab3696b4a92e3ded03f6282e, type: 3}
   isEnemyProjectile: 1
-  projectileRange: 10
+  projectileRange: 30

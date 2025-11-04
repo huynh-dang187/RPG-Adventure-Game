@@ -1,4 +1,3 @@
-interface IEnemy
-{
+interface IEnemy {
     public void Attack();
 }

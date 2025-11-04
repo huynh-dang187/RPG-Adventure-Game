@@ -9,25 +9,26 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float knockBackThrust = 15f;
 
     private int currentHealth;
-    private Knockback Knockback;
-    private Flash flash ;
+    private Knockback knockback;
+    private Flash flash;
 
-    private void Awake(){
+    private void Awake() {
         flash = GetComponent<Flash>();
-        Knockback = GetComponent<Knockback>();
+        knockback = GetComponent<Knockback>();
     }
+
     private void Start() {
         currentHealth = startingHealth;
     }
 
     public void TakeDamage(int damage) {
         currentHealth -= damage;
-        Knockback.GetKnockedBack(PlayerController.Instance.transform,knockBackThrust);
+        knockback.GetKnockedBack(PlayerController.Instance.transform, knockBackThrust);
         StartCoroutine(flash.FlashRoutine());
         StartCoroutine(CheckDetectDeathRoutine());
     }
 
-    private IEnumerator CheckDetectDeathRoutine(){
+    private IEnumerator CheckDetectDeathRoutine() {
         yield return new WaitForSeconds(flash.GetRestoreMatTime());
         DetectDeath();
     }

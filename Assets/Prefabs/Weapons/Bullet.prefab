@@ -119,7 +119,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &4866740010909209935
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c212f6ddfa26da0459197aca5b68bcec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  moveSpeed: 8
+  moveSpeed: 9
   particleOnHitPrefabVFX: {fileID: 5113080923070081056, guid: 9d046658ab3696b4a92e3ded03f6282e, type: 3}
   isEnemyProjectile: 1
-  projectileRange: 30
+  projectileRange: 50

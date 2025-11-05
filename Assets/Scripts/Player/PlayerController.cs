@@ -87,6 +87,7 @@ public class PlayerController : Singleton<PlayerController>
             moveSpeed *= dashSpeed;
             myTrailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
+            SoundManager.Instance.PlaySound3D("Dash", transform.position); // Dash sound effect
         }
     }
 

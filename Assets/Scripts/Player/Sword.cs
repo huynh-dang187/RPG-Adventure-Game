@@ -54,7 +54,7 @@ public class Sword : MonoBehaviour, IWeapon
         weaponCollider.gameObject.SetActive(true);
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
         slashAnim.transform.parent = this.transform.parent;
-        
+        SoundManager.Instance.PlaySound3D("Slash", transform.position); // Slash sound effect
     }
 
 

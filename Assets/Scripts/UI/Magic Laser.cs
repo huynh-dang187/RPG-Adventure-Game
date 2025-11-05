@@ -22,6 +22,7 @@ public class MagicLaser : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.Instance.PlaySound3D("Staff", transform.position); // Staff sound effect
         LaserFaceMouse();
     }
     private void OnTriggerEnter2D(Collider2D other)

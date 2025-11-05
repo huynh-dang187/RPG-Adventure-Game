@@ -8,13 +8,16 @@ public class AreaExit : MonoBehaviour
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string sceneTransitionName;
 
-    private float waitToLoadTime = 1f ;
+    private float waitToLoadTime = 2f ;
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
+            
             SceneManagement.Instance.SetTransitionName(sceneTransitionName);
             UIFade.Instance.FadeToBlack();
             StartCoroutine(LoadSceneRoutine());
+            SoundManager.Instance.PlaySound3D("Portal", transform.position); // Portal sound effect
+            
         }
     }
 

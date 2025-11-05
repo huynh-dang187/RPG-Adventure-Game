@@ -130,7 +130,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -262,12 +262,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
   bulletPrefab: {fileID: 1261141783758053635, guid: 989fe7eea2c624742b813219bd501077, type: 3}
   bulletMoveSpeed: 6
-  burstCount: 5
-  projectilesPerBurst: 6
-  angleSpread: 167
-  startingDistance: 0.1
-  timeBetweenBursts: 0.3
-  restTime: 0.5
+  burstCount: 12
+  projectilesPerBurst: 14
+  angleSpread: 165
+  startingDistance: 0.3
+  timeBetweenBursts: 1
+  restTime: 0.1
+  stagger: 1
+  oscillate: 1
 --- !u!210 &8846938222627678979
 SortingGroup:
   m_ObjectHideFlags: 0

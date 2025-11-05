@@ -13278,8 +13278,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 1996948399}
     m_Modifications:
     - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: stagger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: restTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: oscillate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: burstCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
       propertyPath: angleSpread
-      value: 100
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: startingDistance
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: timeBetweenBursts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615196408195135996, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
+      propertyPath: projectilesPerBurst
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1392350653534652436, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
       propertyPath: m_IsTrigger

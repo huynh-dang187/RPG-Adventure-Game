@@ -8,5 +8,7 @@ public class PickUpSpawner : MonoBehaviour
 
     public void DropItems() {
         Instantiate(goinCoinPrefab, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound3D("Coin_Drop", transform.position); // Coin_Drop sound effect
+        
     }
 }

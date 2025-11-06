@@ -12,6 +12,7 @@ public class Destructible : MonoBehaviour
             GetComponent<PickUpSpawner>().DropItems();
             Instantiate(destroyVFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound3D("Barrel_Destroy", transform.position); // Barrel_Destroy sound effect
         }
     }
 }

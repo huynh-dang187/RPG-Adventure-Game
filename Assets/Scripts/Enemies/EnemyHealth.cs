@@ -37,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0) {
             Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound3D("Slime_Die", transform.position); // Slime_Die sound effect
         }
     }
 }

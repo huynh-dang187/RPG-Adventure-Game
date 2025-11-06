@@ -54,7 +54,7 @@ public class EnemyAI : MonoBehaviour
 {
     timeRoaming += Time.deltaTime;
     enemyPathfinding.MoveTo(roamPosition);
-
+    
     // Chuyển sang trạng thái tấn công nếu player ở gần
     if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange)
     {
@@ -65,6 +65,7 @@ public class EnemyAI : MonoBehaviour
     if (Vector2.Distance(transform.position, roamPosition) < 0.2f || timeRoaming > roamChangeDirFloat)
     {
         roamPosition = GetRoamingPosition();
+        SoundManager.Instance.PlaySound3D("Slime_Move", transform.position); // Slime_Move sound effect
     }
 }
 

@@ -41,6 +41,7 @@ public class Pickup : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound3D("Coin_Pickup", transform.position); // Coin_Pickup sound effect
         }
     }
 

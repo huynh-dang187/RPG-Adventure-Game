@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,7 +35,6 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Start() {
         playerControls.Combat.Dash.performed += _ => Dash();
-
         startingMoveSpeed = moveSpeed;
     }
 
@@ -58,10 +57,11 @@ public class PlayerController : Singleton<PlayerController>
 
     private void PlayerInput() {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
-
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
     }
+//        SoundManager.Instance.PlaySound3D("Player_Movement", transform.position); // Player_Movement sound effect
+      
 
     private void Move() {
         if(knockback.GettingKnockedBack){ return; }

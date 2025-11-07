@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
-{
+{   
+    private enum PickUpType
+    {
+        GoldCoin,
+        StaminaGlobe,
+        HealthGlobe,
+    }
+
+    [SerializeField] private PickUpType pickUpType;
     [SerializeField] private float pickUpDistance = 5f;
     [SerializeField] private float accelartionRate = .2f;
     [SerializeField] private float moveSpeed = 3f;
@@ -40,12 +49,14 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
+            DetectPickupType(); 
             Destroy(gameObject);
             SoundManager.Instance.PlaySound3D("Coin_Pickup", transform.position); // Coin_Pickup sound effect
         }
     }
 
-    private IEnumerator AnimCurveSpawnRoutine() {
+    private IEnumerator AnimCurveSpawnRoutine()
+    {
         Vector2 startPoint = transform.position;
         float randomX = transform.position.x + Random.Range(-2f, 2f);
         float randomY = transform.position.y + Random.Range(-1f, 1f);
@@ -63,6 +74,22 @@ public class Pickup : MonoBehaviour
 
             transform.position = Vector2.Lerp(startPoint, endPoint, linearT) + new Vector2(0f, height);
             yield return null;
+        }
+    }
+
+    private void DetectPickupType() {
+        switch (pickUpType)
+        {
+            case PickUpType.GoldCoin:
+                Debug.Log("GoldCoin");
+                break;
+            case PickUpType.HealthGlobe:
+                PlayerHealth.Instance.HealPlayer();
+                Debug.Log("HealthGlobe");
+                break;
+            case PickUpType.StaminaGlobe:
+                Debug.Log("StaminaGlobe");
+                break;
         }
     }
 }

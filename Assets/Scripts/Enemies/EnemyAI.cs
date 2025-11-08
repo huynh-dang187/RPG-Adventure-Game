@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float roamChangeDirFloat = 2f;
-    [SerializeField] private float attackRange = 5f;
+    [SerializeField] private float attackRange = 0f;
     [SerializeField] private MonoBehaviour enemyType;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
@@ -50,25 +50,19 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void Roaming()
-{
-    timeRoaming += Time.deltaTime;
-    enemyPathfinding.MoveTo(roamPosition);
-    
-    // Chuyển sang trạng thái tấn công nếu player ở gần
-    if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange)
-    {
-        state = State.Attacking;
-    }
+    private void Roaming() {
+        timeRoaming += Time.deltaTime;
 
-    // Nếu đến gần vị trí đích thì chọn vị trí mới
-    if (Vector2.Distance(transform.position, roamPosition) < 0.2f || timeRoaming > roamChangeDirFloat)
-    {
-        roamPosition = GetRoamingPosition();
-        SoundManager.Instance.PlaySound3D("Slime_Move", transform.position); // Slime_Move sound effect
-    }
-}
+        enemyPathfinding.MoveTo(roamPosition);
 
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
+            state = State.Attacking;
+        }
+
+        if (timeRoaming > roamChangeDirFloat) {
+            roamPosition = GetRoamingPosition();
+        }
+    }
 
     private void Attacking() {
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange)

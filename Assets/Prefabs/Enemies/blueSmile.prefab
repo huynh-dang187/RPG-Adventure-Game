@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4992169396427368121}
   - component: {fileID: -4722019390310618335}
   - component: {fileID: 4087025207381619808}
+  - component: {fileID: 8974367023869054433}
   m_Layer: 0
   m_Name: blueSmile
   m_TagString: Untagged
@@ -174,6 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   roamChangeDirFloat: 2
+  attackRange: 5
+  enemyType: {fileID: 0}
+  attackCooldown: 2
+  stopMovingWhileAttacking: 0
 --- !u!114 &709236242983000899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +234,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flash
   whiteFlashMat: {fileID: 2100000, guid: 8f0a3cfeba777db42ac6a6fa526bcbc9, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!114 &8974367023869054433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648784003874999864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5606c929b5beb6c4199e3f34a27fdfbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpSpawner
+  goldCoin: {fileID: 3287957596136665689, guid: fbabd221d52c0aa4cae20beb2b63dfa5, type: 3}
+  healthGlobe: {fileID: 3287957596136665689, guid: 15585f39828ceb44d829ddad657f6b4e, type: 3}
+  staminaGlobe: {fileID: 3287957596136665689, guid: e022bb63c6aedda489daeb207e686e36, type: 3}

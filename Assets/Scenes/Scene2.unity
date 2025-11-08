@@ -201,7 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5606c929b5beb6c4199e3f34a27fdfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpSpawner
-  goinCoinPrefab: {fileID: 3287957596136665689, guid: fbabd221d52c0aa4cae20beb2b63dfa5, type: 3}
+  goldCoin: {fileID: 0}
+  healthGlobe: {fileID: 0}
+  staminaGlobe: {fileID: 0}
 --- !u!1 &139419161
 GameObject:
   m_ObjectHideFlags: 0
@@ -6780,11 +6782,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &260003751 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5587175755658320799, guid: 6db7763d886fde047ba80eec196c6b68, type: 3}
-  m_PrefabInstance: {fileID: 2141290953}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &420774155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6846,104 +6843,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91cc1aa373effc44dad9da4aaadd977f, type: 3}
---- !u!1 &425725782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 425725783}
-  - component: {fileID: 425725785}
-  - component: {fileID: 425725784}
-  m_Layer: 0
-  m_Name: Screen Shake Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &425725783
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425725782}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 260003751}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &425725784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425725782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41310e4ce2bbad64ba376a15ee7349c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShakeManager
---- !u!114 &425725785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425725782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineImpulseSource
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_ImpulseShape: 2
-    m_CustomImpulseShape:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
-    m_ImpulseType: 3
-    m_DissipationRate: 0.25
-    m_RawSignal: {fileID: 11400000, guid: 7e7b1a21237121440b0c67083520659d, type: 2}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0
-      m_SustainTime: 0.15
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 0
-    m_DissipationMode: 2
-    m_DissipationDistance: 100
-    m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &551811294
 GameObject:
   m_ObjectHideFlags: 0
@@ -7156,7 +7055,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5606c929b5beb6c4199e3f34a27fdfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpSpawner
-  goinCoinPrefab: {fileID: 3287957596136665689, guid: fbabd221d52c0aa4cae20beb2b63dfa5, type: 3}
+  goldCoin: {fileID: 0}
+  healthGlobe: {fileID: 0}
+  staminaGlobe: {fileID: 0}
 --- !u!1001 &674663596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7296,7 +7197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5606c929b5beb6c4199e3f34a27fdfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpSpawner
-  goinCoinPrefab: {fileID: 3287957596136665689, guid: fbabd221d52c0aa4cae20beb2b63dfa5, type: 3}
+  goldCoin: {fileID: 0}
+  healthGlobe: {fileID: 0}
+  staminaGlobe: {fileID: 0}
 --- !u!1 &815415425
 GameObject:
   m_ObjectHideFlags: 0
@@ -12348,7 +12251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1996948399
 Transform:
   m_ObjectHideFlags: 0
@@ -12551,10 +12454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5587175755658320799, guid: 6db7763d886fde047ba80eec196c6b68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 425725783}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db7763d886fde047ba80eec196c6b68, type: 3}
 --- !u!4 &2142666620 stripped
@@ -18012,14 +17912,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.1094599
-      objectReference: {fileID: 0}
     - target: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.6
@@ -18068,10 +17960,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1425981880}
-    - target: {fileID: 8697558395353821619, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
-      propertyPath: m_ChildCameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

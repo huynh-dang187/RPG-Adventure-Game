@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
-{   
+{
     private enum PickUpType
     {
         GoldCoin,
@@ -49,14 +48,12 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
-            DetectPickupType(); 
+            DetectPickupType();
             Destroy(gameObject);
-            SoundManager.Instance.PlaySound3D("Coin_Pickup", transform.position); // Coin_Pickup sound effect
         }
     }
 
-    private IEnumerator AnimCurveSpawnRoutine()
-    {
+    private IEnumerator AnimCurveSpawnRoutine() {
         Vector2 startPoint = transform.position;
         float randomX = transform.position.x + Random.Range(-2f, 2f);
         float randomY = transform.position.y + Random.Range(-1f, 1f);
@@ -81,6 +78,7 @@ public class Pickup : MonoBehaviour
         switch (pickUpType)
         {
             case PickUpType.GoldCoin:
+                EconomyManager.Instance.UpdateCurrentGold();
                 Debug.Log("GoldCoin");
                 break;
             case PickUpType.HealthGlobe:
@@ -88,6 +86,7 @@ public class Pickup : MonoBehaviour
                 Debug.Log("HealthGlobe");
                 break;
             case PickUpType.StaminaGlobe:
+                // do stamina globe stuff
                 Debug.Log("StaminaGlobe");
                 break;
         }

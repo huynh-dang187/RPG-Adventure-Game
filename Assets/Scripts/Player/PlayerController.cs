@@ -35,6 +35,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Start() {
         playerControls.Combat.Dash.performed += _ => Dash();
+
         startingMoveSpeed = moveSpeed;
     }
 
@@ -57,14 +58,14 @@ public class PlayerController : Singleton<PlayerController>
 
     private void PlayerInput() {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
+
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
     }
-//        SoundManager.Instance.PlaySound3D("Player_Movement", transform.position); // Player_Movement sound effect
-      
 
     private void Move() {
-        if(knockback.GettingKnockedBack){ return; }
+        if (knockback.GettingKnockedBack) { return; }
+
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
 
@@ -82,12 +83,12 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Dash() {
-        if (!isDashing) {
+        if (!isDashing && Stamina.Instance.CurrentStamina > 0) {
+            Stamina.Instance.UseStamina();
             isDashing = true;
             moveSpeed *= dashSpeed;
             myTrailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
-            SoundManager.Instance.PlaySound3D("Dash", transform.position); // Dash sound effect
         }
     }
 

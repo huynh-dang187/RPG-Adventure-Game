@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9008587318022146967}
   - component: {fileID: 8256746882463658405}
   - component: {fileID: 4936489218801934509}
+  - component: {fileID: 1109967280326210804}
   m_Layer: 0
   m_Name: 'Gold Coin '
   m_TagString: Untagged
@@ -150,8 +151,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0026871427, y: -0.008061037}
-  m_Size: {x: 0.4357383, y: 0.40349916}
+  m_Offset: {x: 0.0027830903, y: 0.00017735331}
+  m_Size: {x: 0.35578227, y: 0.34333184}
   m_Direction: 1
 --- !u!50 &8256746882463658405
 Rigidbody2D:
@@ -192,9 +193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d57f8f79ba14d04b883f9136b2e62a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
+  pickUpType: 0
   pickUpDistance: 4
   accelartionRate: 3
-  moveSpeed: 100
+  moveSpeed: 50
   animCurve:
     serializedVersion: 2
     m_Curve:
@@ -230,3 +232,15 @@ MonoBehaviour:
     m_RotationOrder: 4
   heightY: 1.5
   popDuration: 0.5
+--- !u!114 &1109967280326210804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3287957596136665689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a15c9da4819c5643b80d465e308bf37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomIdleAnimation

@@ -20,7 +20,7 @@ public class PickUpSpawner : MonoBehaviour
         }
         if(randomNum == 3)
         {
-            int randomAmountOfGold = Random.Range(1, 4);
+            int randomAmountOfGold = Random.Range(1,4);
 
             for(int i = 0; i< randomAmountOfGold; i++)
             {

@@ -230,7 +230,12 @@ AnimatorStateMachine:
     m_Position: {x: 370, y: 50, z: 0}
   m_ChildStateMachines: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnyStateTransitions: []
+=======
+  m_AnyStateTransitions:
+  - {fileID: -4110460753861905462}
+>>>>>>> Stashed changes
 =======
   m_AnyStateTransitions:
   - {fileID: -4110460753861905462}

@@ -231,7 +231,12 @@ AnimatorStateMachine:
   m_ChildStateMachines: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnyStateTransitions: []
+=======
+  m_AnyStateTransitions:
+  - {fileID: -4110460753861905462}
+>>>>>>> Stashed changes
 =======
   m_AnyStateTransitions:
   - {fileID: -4110460753861905462}

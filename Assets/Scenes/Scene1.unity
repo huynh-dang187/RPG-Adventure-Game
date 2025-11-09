@@ -17197,10 +17197,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1616431778}
-    - target: {fileID: 8697558395353821619, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
-      propertyPath: m_ChildCameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

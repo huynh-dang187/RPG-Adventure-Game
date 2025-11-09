@@ -182,15 +182,6 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.44992796
-      value: 0.35010955
-      inSlope: -0.0075519537
-      outSlope: -0.0075519537
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1.0424302
       value: 0.005847256
       inSlope: -0.9536829
@@ -204,4 +195,3 @@ MonoBehaviour:
     m_RotationOrder: 4
   heightY: 5.5
   grapeProjectileShadow: {fileID: 3117313714618852133, guid: f7f5a8625f8203849bc6f70f9d1e305a, type: 3}
-  splatterPrefab: {fileID: 601203201951453308, guid: 1553513a3cbf996449b70c2a11bbbbe8, type: 3}

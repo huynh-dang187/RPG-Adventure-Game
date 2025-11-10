@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 35c0ffcd641ca71428f1c22a8ef951a9
+guid: 0bd3e6e0fe7e72344a105a5782bc846a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2966200626249415253
-    second: 11_0
-  - first:
-      213: 6218123344806412219
-    second: 11_1
+      213: -4249693664008208716
+    second: cleric_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -27,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -60,7 +57,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 7
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -116,35 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 11_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba5ccdbfe30f5d6d0800000000000000
-      internalID: -2966200626249415253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 11_1
+      name: cleric_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 16
+        width: 222
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbfffb0bc363b4650800000000000000
-      internalID: 6218123344806412219
+      spriteID: 4beff80e02e0605c0800000000000000
+      internalID: -4249693664008208716
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      11_0: -2966200626249415253
-      11_1: 6218123344806412219
+      cleric_0: -4249693664008208716
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,19 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
-public class NPCdialo : MonoBehaviour
+
+
+[CreateAssetMenu(fileName = "NewNPCDialogue", menuName = "NPC Dialogue")] 
+public class NPCdialogue : ScriptableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public string npcName;
+    public Sprite npcPortrait;
+    public string[] dialogueLines;
+    public float typingSpeed = 0.5f;
+    public AudioClip voiceSound;
+    public float voicePitch = 1f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool[] autoProgressLines;
+    public float autoProgressDelay = 1.5f;
 }

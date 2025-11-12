@@ -7757,7 +7757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCInteractUI
   interactPrefab: {fileID: 6695509084342250094, guid: cc6ba0988c0485145952f97a68b44d4a, type: 3}
   interactPoint: {fileID: 655456501}
-  showDistance: 2
+  showDistance: 4
 --- !u!1 &677097538
 GameObject:
   m_ObjectHideFlags: 0
@@ -11012,7 +11012,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.9382896, y: 2.165612}
+  m_Offset: {x: -1.1551625, y: 1.3778081}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.4705882, y: 0}
@@ -11022,7 +11022,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.6071186, y: 6.7030196}
+  m_Size: {x: 5.040864, y: 3.326717}
   m_EdgeRadius: 0
 --- !u!114 &1431019063
 MonoBehaviour:
@@ -24045,18 +24045,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 84059451}
     m_Modifications:
-    - target: {fileID: 3716059739963416005, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3789191367102368947, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-    - target: {fileID: 3789191367102368947, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3791004826789058031, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24137,6 +24125,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5285357603695077808, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 456
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285357603695077808, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 67
+      objectReference: {fileID: 0}
     - target: {fileID: 5348630037507535083, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
       propertyPath: m_Type
       value: 1
@@ -24145,21 +24141,25 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5348630037507535083, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
-      propertyPath: m_Material
-      value: 
+    - target: {fileID: 6735780832262358220, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820481474189297506, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820481474189297506, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6820481474189297506, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1431019063}
-    - target: {fileID: 7450252973545491051, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-    - target: {fileID: 7450252973545491051, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
+    - target: {fileID: 8130532615198452522, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8661616487655082058, guid: 2f72f35a2bab907489760e14cc0fe1a4, type: 3}
       propertyPath: m_Name

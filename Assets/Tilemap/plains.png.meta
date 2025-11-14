@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plains_0
+      name: upStairs
       rect:
         serializedVersion: 2
-        x: 0
-        y: 112
-        width: 16
-        height: 16
+        x: 16
+        y: 16
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1096,7 +1096,6 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      plains_0: -6243134052031417624
       plains_1: 59927074
       plains_10: -58625723
       plains_11: -1688866058
@@ -1140,6 +1139,7 @@ TextureImporter:
       plains_7: -250872018
       plains_8: -1444277550
       plains_9: 1184272259
+      upStairs: -6243134052031417624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

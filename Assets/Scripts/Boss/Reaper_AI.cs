@@ -128,15 +128,25 @@ public class Reaper_AI : MonoBehaviour
     // HÀM LẬT MẶT BOSS
     void FacePlayer()
     {
+        // Lấy vị trí X local của AttackPoint (ví dụ: 1.5)
+        // Dùng Mathf.Abs để đảm bảo nó luôn là số dương
+        float attackPointX = Mathf.Abs(attackPoint.localPosition.x);
+
         if (transform.position.x < player.position.x)
         {
-            // Player đang ở bên phải Boss -> Boss quay phải
-            spriteRenderer.flipX = false;
+            // --- Player bên phải ---
+            spriteRenderer.flipX = false; // Quay phải
+
+            // Di chuyển AttackPoint sang BÊN PHẢI (X dương)
+            attackPoint.localPosition = new Vector2(attackPointX, attackPoint.localPosition.y);
         }
         else
         {
-            // Player đang ở bên trái Boss -> Boss quay trái
-            spriteRenderer.flipX = true;
+            // --- Player bên trái ---
+            spriteRenderer.flipX = true; // Quay trái
+
+            // Di chuyển AttackPoint sang BÊN TRÁI (X âm)
+            attackPoint.localPosition = new Vector2(-attackPointX, attackPoint.localPosition.y);
         }
     }
 
@@ -180,24 +190,35 @@ public class Reaper_AI : MonoBehaviour
     // -----------------------------------------------------------------
     
     // Hàm này sẽ được gọi bằng Event trên anim "attack"
-    public void DealDamage_Attack() 
-    {
-        // 1. Tạo một vòng tròn vô hình tại AttackPoint
-    // Nó sẽ trả về MỌI collider mà nó chạm vào
-    Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, playerLayer);
+    // Hàm này sẽ được gọi bằng Event trên anim "attack"
+public void DealDamage_Attack()
+{
+    // DÒNG 1: ĐÃ CHẠY
+    Debug.Log("!!! KÍCH HOẠT EVENT CHÉM !!!");
 
-    // 2. Duyệt qua tất cả những thứ vừa va chạm
-    foreach (Collider2D player in hitPlayers)
-    {
-        // 3. Nếu trúng Player (đã lọc bằng LayerMask, nhưng kiểm tra
-        // cho chắc), thì gây sát thương
-        Debug.Log("Boss đã chém trúng Player!");
+    // Tạo một vòng tròn vô hình
+    Collider2D[] allHits = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, LayerMask.GetMask("Default"));
 
-        // Giả sử Player có script PlayerHealth và hàm TakeDamage
-        // (Bạn phải tự tạo script này cho Player của mình nhé)
-        player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+    // DÒNG 2 (MỚI): Kiểm tra xem vòng tròn tìm thấy bao nhiêu vật thể
+    Debug.Log("Vòng tròn OverlapCircleAll tìm thấy " + allHits.Length + " vật thể.");
+
+    // Duyệt qua TẤT CẢ những thứ vừa va chạm
+    foreach (Collider2D hit in allHits)
+    {
+        // DÒNG 3 (MỚI): In ra tên và Tag của MỌI VẬT THỂ
+        Debug.Log("--- Đã va chạm với: " + hit.gameObject.name + " (Tag: " + hit.tag + ")");
+
+        // Kiểm tra xem vật thể đó có Tag là "Player" không?
+        if (hit.CompareTag("Player"))
+        {
+            // Nếu ĐÚNG là Player, thì mới gây sát thương
+            Debug.Log(">>> THÀNH CÔNG! Gây sát thương cho Player!");
+            
+            hit.GetComponent<PlayerHealth>().TakeDamage(attackDamage, transform);
+            break;
+        }
     }
-    }
+}
 
     // Hàm này sẽ được gọi bằng Event trên anim "summon"
     public void ExecuteSummon() 

@@ -20,7 +20,7 @@ public class BossHealth : MonoBehaviour
     }
 
     // Hàm này sẽ được Player gọi khi tấn công Boss
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Transform hitTransform)
     {
         // Nếu boss đã chết, không nhận thêm sát thương
         if (aiScript.currentState == Reaper_AI.BossState.Dead) return;

@@ -14,6 +14,14 @@ public class Reaper_AI : MonoBehaviour
     public enum BossState { Idle, Chasing, Attacking, Summoning, Dead }
     public BossState currentState; // Trạng thái hiện tại của Boss
 
+    // Summon Monster ( skill)
+    // ... (biến cũ) ...
+
+    [Header("Summon Settings")]
+    public GameObject wispPrefab; // Prefab con Ma trơi
+    public Transform[] summonPoints; // Mảng các điểm để ma xuất hiện
+
+
     // 2. Các biến tham chiếu (Component)
     // Kéo thả vào Inspector hoặc để code tự tìm
     public Transform player;
@@ -221,10 +229,17 @@ public void DealDamage_Attack()
 }
 
     // Hàm này sẽ được gọi bằng Event trên anim "summon"
-    public void ExecuteSummon() 
-    { 
-        // Sẽ code ở Bước 6
+    // Hàm này sẽ được gọi bằng Event trên anim "summon"
+    public void ExecuteSummon()
+    {
         Debug.Log("BOSS TRIỆU HỒI ĐỆ!");
+
+        // Duyệt qua tất cả các điểm summonPoints
+        foreach (Transform point in summonPoints)
+        {
+            // Tạo (Instantiate) 1 con Wisp tại vị trí của điểm đó
+            Instantiate(wispPrefab, point.position, Quaternion.identity);
+        }
     }
     void OnDrawGizmosSelected()
     {

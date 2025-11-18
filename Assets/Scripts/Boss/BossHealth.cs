@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI; // Sẽ cần nếu bạn dùng thanh máu UI
-
+using TMPro;
 public class BossHealth : MonoBehaviour
 {
     public int maxHealth = 1000;
     public int currentHealth; // <--- DÒNG NÀY SẼ SỬA LỖI CỦA BẠN
-
+    [Header("UI Settings")]
+    public Slider healthSlider;
+    public GameObject healthBarFrame; // Kéo BossHealthFrame vào đây
+    public TextMeshProUGUI bossNameText; // Kéo BossNameText vào đây
     public Reaper_AI aiScript; // Tham chiếu đến script AI
     public Animator animator;
     // public Image healthBar; // Nếu có thanh máu UI, bỏ comment dòng này
@@ -17,6 +20,16 @@ public class BossHealth : MonoBehaviour
         // Tự động lấy các component
         aiScript = GetComponent<Reaper_AI>();
         animator = GetComponent<Animator>();
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth; // Giá trị tối đa của slider = Máu boss
+            healthSlider.value = currentHealth; // Giá trị hiện tại = Máu đầy
+        }
+        if (healthBarFrame != null)
+        {
+            healthBarFrame.SetActive(false);
+        }
     }
 
     // Hàm này sẽ được Player gọi khi tấn công Boss
@@ -24,9 +37,17 @@ public class BossHealth : MonoBehaviour
     {
         // Nếu boss đã chết, không nhận thêm sát thương
         if (aiScript.currentState == Reaper_AI.BossState.Dead) return;
-
+        // HIỆN thanh máu và chữ khi Boss bắt đầu nhận damage
+        if (healthBarFrame != null && !healthBarFrame.activeSelf)
+        {
+            healthBarFrame.SetActive(true);
+        }
         currentHealth -= damage;
-        
+        // CẬP NHẬT SLIDER NGAY LẬP TỨC
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+        }
         // Cập nhật thanh máu UI (nếu có)
         // healthBar.fillAmount = (float)currentHealth / maxHealth;
 
@@ -45,7 +66,16 @@ public class BossHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("Boss đã chết!");
-        
+        // Ẩn thanh máu, khung và chữ khi Boss chết
+        if (healthBarFrame != null)
+        {
+            healthBarFrame.SetActive(false);
+        }
+        // Ẩn thanh máu đi khi Boss chết
+        if (healthSlider != null)
+        {
+            healthSlider.gameObject.SetActive(false);
+        }
         // 1. Chuyển trạng thái AI sang Dead
         aiScript.currentState = Reaper_AI.BossState.Dead;
         

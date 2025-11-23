@@ -6,6 +6,9 @@ public class BossHealth : MonoBehaviour
     public int maxHealth = 1000;
     public int currentHealth; // <--- DÒNG NÀY SẼ SỬA LỖI CỦA BẠN
     [Header("UI Settings")]
+
+    [Header("Level Settings")]
+    public GameObject exitPortal;
     public Slider healthSlider;
     public GameObject healthBarFrame; // Kéo BossHealthFrame vào đây
     public TextMeshProUGUI bossNameText; // Kéo BossNameText vào đây
@@ -75,6 +78,12 @@ public class BossHealth : MonoBehaviour
         if (healthSlider != null)
         {
             healthSlider.gameObject.SetActive(false);
+        }
+
+        // Hiện cái cổng ra
+        if (exitPortal != null)
+        {
+            exitPortal.SetActive(true); 
         }
         // 1. Chuyển trạng thái AI sang Dead
         aiScript.currentState = Reaper_AI.BossState.Dead;

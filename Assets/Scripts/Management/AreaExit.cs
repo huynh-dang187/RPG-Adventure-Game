@@ -8,24 +8,27 @@ public class AreaExit : MonoBehaviour
     [SerializeField] private string sceneToLoad;
     [SerializeField] private string sceneTransitionName;
 
-    private float waitToLoadTime = 2f ;
+    
+    [SerializeField] private float waitToLoadTime = 0.5f; 
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
             
             SceneManagement.Instance.SetTransitionName(sceneTransitionName);
-            UIFade.Instance.FadeToBlack();
-            StartCoroutine(LoadSceneRoutine());
-            SoundManager.Instance.PlaySound3D("Portal", transform.position); // Portal sound effect
             
+            // Bắt đầu làm tối màn hình
+            UIFade.Instance.FadeToBlack();
+            
+            StartCoroutine(LoadSceneRoutine());
+            SoundManager.Instance.PlaySound3D("Portal", transform.position); 
         }
     }
 
     private IEnumerator LoadSceneRoutine(){
-        while(waitToLoadTime >= 0){
-            waitToLoadTime -= Time.deltaTime;
-            yield return null;
-        }
+        // 3. Thay vòng lặp while dài dòng bằng 1 dòng này
+        // Nó sẽ đợi đúng khoảng thời gian bạn cài đặt rồi chạy tiếp
+        yield return new WaitForSeconds(waitToLoadTime);
+
         SceneManager.LoadScene(sceneToLoad);
     }
 }

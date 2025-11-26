@@ -11,7 +11,7 @@ TagManager:
   - Camera
   - Water
   - UI
-  - 
+  - Player_High
   - 
   - 
   - 
@@ -40,6 +40,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 1108747139
+    locked: 0
+  - name: HighFloor
+    uniqueID: 3301602569
+    locked: 0
+  - name: Actors
+    uniqueID: 1499376519
     locked: 0
   m_RenderingLayers:
   - Default

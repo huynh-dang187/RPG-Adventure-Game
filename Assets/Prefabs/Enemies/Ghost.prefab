@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 615196408195135996}
   - component: {fileID: 8846938222627678979}
   - component: {fileID: 5281405138021509658}
+  - component: {fileID: 5400818263605323574}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -92,7 +93,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 4628221225906215552, guid: 682812a14d130e249995c70087f14950, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4, y: 4}
@@ -236,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flash
   whiteFlashMat: {fileID: 2100000, guid: 8f0a3cfeba777db42ac6a6fa526bcbc9, type: 2}
-  restoreDefaultMatTime: 0.2
+  restoreMatTime: 0.2
 --- !u!114 &8619725069985812808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +299,25 @@ MonoBehaviour:
   goldCoin: {fileID: 3287957596136665689, guid: fbabd221d52c0aa4cae20beb2b63dfa5, type: 3}
   healthGlobe: {fileID: 3287957596136665689, guid: 15585f39828ceb44d829ddad657f6b4e, type: 3}
   staminaGlobe: {fileID: 3287957596136665689, guid: e022bb63c6aedda489daeb207e686e36, type: 3}
+--- !u!95 &5400818263605323574
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648784003874999864}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 74cfb4dc14e7e6842b097acf2a588551, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

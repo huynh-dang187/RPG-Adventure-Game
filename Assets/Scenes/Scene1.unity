@@ -8033,6 +8033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AreaExit
   sceneToLoad: Scene2
   sceneTransitionName: WEntry
+  waitToLoadTime: 0.5
 --- !u!61 &627201070
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20516,7 +20517,7 @@ Transform:
   m_GameObject: {fileID: 7432891236886270133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.95, y: -0.9, z: 0}
+  m_LocalPosition: {x: -2.83, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20531,7 +20532,7 @@ Transform:
   m_GameObject: {fileID: 1183869292521678663}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.04, y: -0.83, z: 0}
+  m_LocalPosition: {x: 21.19, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20710,11 +20711,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.0457478
+      value: 4.040944
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.17693
+      value: 1.0995
       objectReference: {fileID: 0}
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Follow
@@ -20762,7 +20763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.14
+      value: 8.190001
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20863,6 +20864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AreaExit
   sceneToLoad: SceneStart
   sceneTransitionName: SceneStart
+  waitToLoadTime: 0.5
 --- !u!198 &5812468395151273616
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -25856,7 +25858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.84
+      value: 10.89
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.y

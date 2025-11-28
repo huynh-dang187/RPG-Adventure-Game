@@ -6,38 +6,57 @@ public class DamageSource : MonoBehaviour
 {
     private int damageAmount;
 
-    private void Start() {
-      
-        MonoBehaviour currenActiveWeapon = ActiveWeapon.Instance.CurrentActiveWeapon;
-        damageAmount = (currenActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage;
+    private void Start() 
+    {
+        // Lấy damage từ vũ khí hiện tại
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        {
+            damageAmount = (ActiveWeapon.Instance.CurrentActiveWeapon as IWeapon).GetWeaponInfo().weaponDamage;
+        }
+        else
+        {
+            damageAmount = 1; // Damage mặc định
+        }
     }
-
+    
+    // Code xử lý va chạm phải nằm trong hàm này
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        SoundManager.Instance.PlaySound3D("Hit", transform.position); 
-
-        // 1. Kiểm tra Quái thường (Code GỐC của bạn)
-        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
+        // 1. ƯU TIÊN KIỂM TRA SKELETON (Code mới thêm)
+        // Dùng GetComponentInParent để tìm ở cả Cha lẫn Con
+        SkeletonHealth skeleton = other.GetComponentInParent<SkeletonHealth>();
+        if (skeleton != null)
         {
-            enemyHealth.TakeDamage(damageAmount); // (Code cũ của bạn)
-            return; // Đã gây damage -> Xong
+            skeleton.TakeDamage(damageAmount);
+            SoundManager.Instance.PlaySound3D("Hit", transform.position);
+            return; // Đã chém trúng thì dừng, không xét tiếp
         }
 
-        // 2. Kiểm tra Boss
-        BossHealth bossHealth = other.gameObject.GetComponent<BossHealth>();
+        // 2. Kiểm tra Quái thường (EnemyHealth)
+        EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(damageAmount);
+            SoundManager.Instance.PlaySound3D("Hit", transform.position);
+            return; 
+        }
+
+        // 3. Kiểm tra Boss
+        BossHealth bossHealth = other.GetComponentInParent<BossHealth>();
         if (bossHealth != null)
         {
             bossHealth.TakeDamage(damageAmount, PlayerController.Instance.transform);
-            return; // Đã gây damage -> Xong
+            SoundManager.Instance.PlaySound3D("Hit", transform.position);
+            return; 
         }
 
-        // 3. KIỂM TRA WISP (Đệ)
-        WispHealth wispHealth = other.gameObject.GetComponent<WispHealth>();
+        // 4. Kiểm tra Wisp (Đệ)
+        WispHealth wispHealth = other.GetComponentInParent<WispHealth>();
         if (wispHealth != null)
         {
             wispHealth.TakeDamage(damageAmount, PlayerController.Instance.transform);
-            return; // Đã gây damage -> Xong
+            SoundManager.Instance.PlaySound3D("Hit", transform.position);
+            return; 
         }
     }
 }

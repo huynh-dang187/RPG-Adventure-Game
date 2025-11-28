@@ -101,7 +101,11 @@ public class SkeletonHealth : MonoBehaviour
 
             // E. Tắt script này luôn
             this.enabled = false; 
-
+            EnemyManager manager = GetComponentInParent<EnemyManager>();
+            if (manager != null)
+            {
+                manager.EnemyDefeated();
+            }
             // F. Hủy xác sau 2 giây
             Destroy(gameObject, 2f);
         }

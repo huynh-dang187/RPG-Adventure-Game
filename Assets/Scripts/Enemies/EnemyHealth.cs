@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int startingHealth = 3;
-    [SerializeField] private GameObject deathVFXPrefab; // Biến này đang bị Null
+    [SerializeField] private GameObject deathVFXPrefab; 
     [SerializeField] private float knockBackThrust = 15f;
 
     private int currentHealth;
@@ -53,23 +53,31 @@ public class EnemyHealth : MonoBehaviour
     public void DetectDeath() {
         if (currentHealth <= 0) {
             
-            // Rớt đồ
+            // 1. Rớt đồ
             if (TryGetComponent(out PickUpSpawner pickUpSpawner))
             {
                 pickUpSpawner.DropItems();
             }
 
-            // --- ĐÂY LÀ ĐOẠN FIX LỖI ---
-            // Kiểm tra: Nếu biến deathVFXPrefab CÓ dữ liệu thì mới tạo
+            // 2. Tạo hiệu ứng nổ
             if (deathVFXPrefab != null) 
             {
                 Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
             }
-            // ---------------------------
 
+            // --- QUAN TRỌNG: BÁO CÁO CHO ENEMY MANAGER ---
+            // (Thêm đoạn này để Cổng biết mà mở)
+            EnemyManager manager = GetComponentInParent<EnemyManager>();
+            if (manager != null)
+            {
+                manager.EnemyDefeated();
+            }
+            // ---------------------------------------------
+
+            // 3. Xử lý chết (Có Animation hoặc Không)
             if (animator != null)
             {
-                animator.SetTrigger("die"); // Nhớ check tên trigger trong Animator là "die"
+                animator.SetTrigger("die");
 
                 if (enemyAI != null) enemyAI.enabled = false;
                 GetComponent<Collider2D>().enabled = false;
@@ -78,6 +86,7 @@ public class EnemyHealth : MonoBehaviour
             }
             else 
             {
+                // Nếu quái không có animation (ví dụ Slime nổ cái bùm)
                 Destroy(gameObject);
             }
         }

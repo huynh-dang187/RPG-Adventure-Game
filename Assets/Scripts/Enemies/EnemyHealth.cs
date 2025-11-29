@@ -59,36 +59,30 @@ public class EnemyHealth : MonoBehaviour
                 pickUpSpawner.DropItems();
             }
 
-            // 2. Tạo hiệu ứng nổ
+            // 2. Tạo hiệu ứng nổ (BÙM!)
             if (deathVFXPrefab != null) 
             {
                 Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
             }
 
-            // --- QUAN TRỌNG: BÁO CÁO CHO ENEMY MANAGER ---
-            // (Thêm đoạn này để Cổng biết mà mở)
+            // 3. Báo cáo cho Manager
             EnemyManager manager = GetComponentInParent<EnemyManager>();
             if (manager != null)
             {
                 manager.EnemyDefeated();
             }
-            // ---------------------------------------------
 
-            // 3. Xử lý chết (Có Animation hoặc Không)
-            if (animator != null)
-            {
-                animator.SetTrigger("die");
+            // 4. Xử lý xóa sổ quái vật
+            // Tắt AI và Collider ngay lập tức để nó không đánh mình được nữa
+            if (enemyAI != null) enemyAI.enabled = false;
+            GetComponent<Collider2D>().enabled = false;
 
-                if (enemyAI != null) enemyAI.enabled = false;
-                GetComponent<Collider2D>().enabled = false;
-                this.enabled = false; 
-                Destroy(gameObject, 2f);
-            }
-            else 
-            {
-                // Nếu quái không có animation (ví dụ Slime nổ cái bùm)
-                Destroy(gameObject);
-            }
+            // KIỂM TRA QUAN TRỌNG:
+            // Nếu bạn muốn dùng Animation chết (ví dụ quái ngã từ từ)
+            // thì hãy dùng try-catch hoặc kiểm tra kỹ Parameter.
+            // Nhưng nếu muốn "Nổ bùm" rồi mất luôn thì xóa đoạn Animator đi hoặc sửa thành:
+            
+            Destroy(gameObject); // Xóa NGAY LẬP TỨC, không chờ 2s nữa
         }
     }
 }

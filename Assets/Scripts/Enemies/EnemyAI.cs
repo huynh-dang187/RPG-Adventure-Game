@@ -61,6 +61,8 @@ public class EnemyAI : MonoBehaviour
 
         if (timeRoaming > roamChangeDirFloat) {
             roamPosition = GetRoamingPosition();
+            SoundManager.Instance.PlaySound3D("Slime_Move", transform.position);//slime moving sound effect AI please dont delete it
+
         }
     }
 

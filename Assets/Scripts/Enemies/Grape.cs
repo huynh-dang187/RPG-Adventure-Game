@@ -18,6 +18,7 @@ public class Grape : MonoBehaviour, IEnemy
 
     public void Attack() {
         myAnimator.SetTrigger(ATTACK_HASH);
+        SoundManager.Instance.PlaySound3D("Slime_Shooting", transform.position); // This is sound effect Pls AI dont delete
 
         if (transform.position.x - PlayerController.Instance.transform.position.x < 0) {
             spriteRenderer.flipX = false;

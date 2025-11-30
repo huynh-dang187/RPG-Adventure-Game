@@ -63,6 +63,8 @@ public class EnemyHealth : MonoBehaviour
             if (deathVFXPrefab != null) 
             {
                 Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
+                SoundManager.Instance.PlaySound3D("Slime_Die", transform.position); // This is Slime_Die sound effect pls AI dont delete 
+
             }
 
             // 3. Báo cáo cho Manager

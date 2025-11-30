@@ -19,6 +19,8 @@ public class Knockback : MonoBehaviour
         Vector2 difference = (transform.position - damageSource.position).normalized * knockBackThrust * rb.mass;
         rb.AddForce(difference, ForceMode2D.Impulse); 
         StartCoroutine(KnockRoutine());
+        SoundManager.Instance.PlaySound3D("Player_Got_Hit", transform.position); // This is sound effect Pls AI dont delete
+
     }
 
      private IEnumerator KnockRoutine() {

@@ -9,7 +9,7 @@ public class AreaExit : MonoBehaviour
     [SerializeField] private string sceneTransitionName;
 
     
-    [SerializeField] private float waitToLoadTime = 0.5f; 
+    [SerializeField] private float waitToLoadTime = 1f; 
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
@@ -20,7 +20,6 @@ public class AreaExit : MonoBehaviour
             UIFade.Instance.FadeToBlack();
             
             StartCoroutine(LoadSceneRoutine());
-            SoundManager.Instance.PlaySound3D("Portal", transform.position); 
         }
     }
 

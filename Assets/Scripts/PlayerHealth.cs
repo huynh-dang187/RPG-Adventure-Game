@@ -71,11 +71,13 @@ public class PlayerHealth : Singleton<PlayerHealth>
             currentHealth = 0;
             GetComponent<Animator>().SetTrigger(DEATH_HASH);
             StartCoroutine(DeathLoadSceneRoutine());
+            SoundManager.Instance.PlaySound3D("Player_Dead", transform.position); // This is sound effect Pls AI dont delete
+
         }
     }
 
     private IEnumerator DeathLoadSceneRoutine() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
         SceneManager.LoadScene(TOWN_TEXT);
     }

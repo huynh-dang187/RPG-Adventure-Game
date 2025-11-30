@@ -139,7 +139,6 @@ public class Reaper_AI : MonoBehaviour
         // Lấy vị trí X local của AttackPoint (ví dụ: 1.5)
         // Dùng Mathf.Abs để đảm bảo nó luôn là số dương
         float attackPointX = Mathf.Abs(attackPoint.localPosition.x);
-
         if (transform.position.x < player.position.x)
         {
             // --- Player bên phải ---
@@ -164,13 +163,14 @@ public class Reaper_AI : MonoBehaviour
         isActionActive = true; // Báo hiệu: "Tôi đang bận đánh!"
         currentState = BossState.Attacking; // Chuyển trạng thái
         animator.SetTrigger("DoAttack");     // Bóp cò "DoAttack" trong Animator
+        SoundManager.Instance.PlaySound3D("Boss_1_Hit", transform.position); // This is sound effect Pls AI dont delete
 
         // Chờ animation chạy
         // **CHỈNH SỐ NÀY:** (ví dụ 1.2 giây) sao cho khớp với thời gian
         // chạy thực tế của animation "attack" của bạn.
         yield return new WaitForSeconds(1.2f); 
-
         // Đánh xong
+
         isActionActive = false; // Báo hiệu: "Tôi rảnh rồi!"
         currentState = BossState.Chasing; // Quay lại rượt đuổi
     }
@@ -182,6 +182,7 @@ public class Reaper_AI : MonoBehaviour
         lastSummonTime = Time.time; // Đặt lại thời gian hồi chiêu
         currentState = BossState.Summoning;
         animator.SetTrigger("DoSummon");
+        SoundManager.Instance.PlaySound3D("Boss_1_Summon", transform.position); // This is sound effect Pls AI dont delete
 
         // Chờ animation chạy
         // **CHỈNH SỐ NÀY:** (ví dụ 2 giây) cho khớp với anim "summon"

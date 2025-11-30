@@ -60,8 +60,8 @@ MonoBehaviour:
     lastIndex: 0
   - groupID: Portal
     clips:
-    - {fileID: 8300000, guid: 5acd01f134c34a7459b19159a74cb268, type: 3}
-    volume: 0.497
+    - {fileID: 8300000, guid: eab11583dc959b045af8deb41dd9bdc9, type: 3}
+    volume: 1
     lastIndex: 0
   - groupID: Slash
     clips:
@@ -78,6 +78,7 @@ MonoBehaviour:
   - groupID: Slime_Die
     clips:
     - {fileID: 8300000, guid: e873869635d3a6b41b3015417b195a0e, type: 3}
+    - {fileID: 8300000, guid: f767f9a62b580074d871a3ddba49a5b3, type: 3}
     volume: 1
     lastIndex: 0
   - groupID: Coin_Drop
@@ -93,22 +94,60 @@ MonoBehaviour:
   - groupID: Barrel_Destroy
     clips:
     - {fileID: 8300000, guid: c4abd30b784f640458a14abe7d3f9e56, type: 3}
-    volume: 0.405
+    volume: 1
     lastIndex: 0
   - groupID: Slime_Move
     clips:
     - {fileID: 8300000, guid: 1113b9cf71e8fea4fa5e588f152d3dc0, type: 3}
-    volume: 0.405
+    volume: 0.516
     lastIndex: 0
-  - groupID: Slime_Move
+  - groupID: Tourch_fire
     clips:
     - {fileID: 8300000, guid: 1599fae1035f9ad4788beecf209a99c6, type: 3}
-    volume: 0.405
+    volume: 1
     lastIndex: 0
   - groupID: Player_Movement
     clips:
     - {fileID: 8300000, guid: f1a34bd2320dbc340b860e055781d6cf, type: 3}
     volume: 1
+    lastIndex: 0
+  - groupID: Player_Movement
+    clips: []
+    volume: 1
+    lastIndex: 0
+  - groupID: Slime_Shooting
+    clips:
+    - {fileID: 8300000, guid: b25b81005c07acc4c9c3cf66e991040f, type: 3}
+    volume: 0.078
+    lastIndex: 0
+  - groupID: Slime_Bullet_Drop
+    clips:
+    - {fileID: 8300000, guid: 7c468f6f778b2a74fbccb56ed35c6b95, type: 3}
+    - {fileID: 8300000, guid: b2543ab0c833fbd44b329af9267e72c2, type: 3}
+    volume: 0.046
+    lastIndex: 0
+  - groupID: Player_Dead
+    clips:
+    - {fileID: 8300000, guid: cf761325aff9e3f499231a62b075c501, type: 3}
+    - {fileID: 8300000, guid: 486f54fcd02a4f64fb0dce45d40e6257, type: 3}
+    volume: 0.268
+    lastIndex: 0
+  - groupID: Player_Got_Hit
+    clips:
+    - {fileID: 8300000, guid: 1ed544a87fd74d94f804fcf50bf8d7e9, type: 3}
+    volume: 0.51
+    lastIndex: 0
+  - groupID: Boss_1_Hit
+    clips:
+    - {fileID: 8300000, guid: 8646974b44375974f8d3bdecb96996fa, type: 3}
+    - {fileID: 8300000, guid: a7a60ffb7568d9442a103a8b380ae4b9, type: 3}
+    - {fileID: 8300000, guid: 38bf45d3c792b524282d18a86d160dd2, type: 3}
+    volume: 0.51
+    lastIndex: 0
+  - groupID: Boss_1_Summon
+    clips:
+    - {fileID: 8300000, guid: 0dda8c72d8322ef45b67c3df3a45ab38, type: 3}
+    volume: 0.51
     lastIndex: 0
 --- !u!114 &5576816968115484013
 MonoBehaviour:

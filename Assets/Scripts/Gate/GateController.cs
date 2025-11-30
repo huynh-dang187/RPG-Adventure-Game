@@ -22,7 +22,9 @@ public class GateController : MonoBehaviour
         if (blueLight != null) blueLight.SetActive(true); // Bật đèn lên
         
         // Có thể thêm âm thanh mở cổng ở đây
-        // SoundManager.Instance.PlaySound3D("GateOpen", transform.position);
+
+        //SoundManager.Instance.PlaySound3D("GateOpen", transform.position);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

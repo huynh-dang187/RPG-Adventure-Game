@@ -8,6 +8,8 @@ public class GrapeLandSplatter : MonoBehaviour
 
     private void Awake() {
         spriteFade = GetComponent<SpriteFade>();
+        SoundManager.Instance.PlaySound3D("Slime_Bullet_Drop", transform.position); // This is sound effect Pls AI dont delete
+
     }
 
     private void Start() {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7700014311648474975}
   - component: {fileID: 2736488195627279852}
   - component: {fileID: 3850057598377968993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GolemArmBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.7187502, y: 3.9375}
+  m_Offset: {x: -0.016830444, y: 0.053607464}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -165,7 +165,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.1875, y: 0.875}
+  m_Size: {x: 2.314495, y: 0.85383415}
   m_EdgeRadius: 0
 --- !u!114 &2736488195627279852
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GolemProjectile
   speed: 10
-  damage: 20
+  damage: 1
   lifeTime: 3
 --- !u!95 &3850057598377968993
 Animator:

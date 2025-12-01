@@ -4,22 +4,20 @@ public class GolemProjectile : MonoBehaviour
 {
     public float speed = 10f;
     public int damage = 20;
-    public float lifeTime = 3f; // Thời gian tồn tại
+    public float lifeTime = 3f;
 
     private Vector2 direction;
     private bool isFired = false;
 
-    // Hàm này để Boss gọi khi bắn
     public void Fire(Vector2 dir)
     {
         direction = dir;
         isFired = true;
         
-        // Xoay viên đạn theo hướng bắn (nếu cần)
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        Destroy(gameObject, lifeTime); // Tự hủy sau 3s
+        Destroy(gameObject, lifeTime);
     }
 
     void Update()
@@ -32,16 +30,25 @@ public class GolemProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // 1. Kiểm tra va chạm với Player
         if (other.CompareTag("Player"))
         {
-            // Gây damage cho Player (Giả sử player có script PlayerHealth)
-            // other.GetComponent<PlayerHealth>().TakeDamage(damage); 
-            Debug.Log("Trúng Player! Gây " + damage + " sát thương.");
-            Destroy(gameObject); // Trúng thì nổ
+            Debug.Log("Đạn trúng Player!");
+
+            // 2. Gọi hàm gây dame (Cần truyền thêm 'transform' để tính hướng đẩy lùi)
+            var health = other.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(damage, transform); 
+            }
+            
+            // 3. Nổ đạn
+            Destroy(gameObject);
         }
-        else if (other.CompareTag("Ground") || other.CompareTag("Wall"))
+        // 4. Kiểm tra va chạm với Tường (Để đạn không bay xuyên tường)
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Default")) 
         {
-            Destroy(gameObject); // Trúng tường cũng nổ
+            Destroy(gameObject);
         }
     }
 }

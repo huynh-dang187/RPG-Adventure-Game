@@ -7074,10 +7074,10 @@ MonoBehaviour:
   moveSpeed: 4
   dashSpeed: 10
   meleeRange: 3
-  dashRange: 8
+  dashRange: 5
   shootRange: 10
   laserRange: 15
-  actionCooldown: 2
+  actionCooldown: 1.5
   isEnraged: 0
 --- !u!114 &287527484
 MonoBehaviour:
@@ -7093,10 +7093,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   maxHealth: 10
   currentHealth: 0
+  isInvulnerable: 0
   healthSlider: {fileID: 0}
   healthBarFrame: {fileID: 0}
   bossNameText: {fileID: 0}
   exitPortal: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &287527485
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17344,6 +17348,10 @@ PrefabInstance:
     - target: {fileID: 7169331935834640025, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110825521432812840, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: maxHealth
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

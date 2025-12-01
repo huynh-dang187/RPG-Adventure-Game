@@ -26,7 +26,7 @@ public class MechaGolem_AI : MonoBehaviour
     public float moveSpeed = 2f;
     public float dashSpeed = 15f;       // Tốc độ lướt nhanh
     public float meleeRange = 3f;       // Tầm gây dame
-    public float dashRange = 8f;        // Tầm bắt đầu lướt
+    public float dashRange = 6f;        // Tầm bắt đầu lướt (Để 6 cho chuẩn)
     public float shootRange = 10f;
     public float laserRange = 15f;
 
@@ -38,23 +38,28 @@ public class MechaGolem_AI : MonoBehaviour
     public bool isEnraged = false;
     private BossHealth bossHealth;
 
+    // Biến quản lý tia Laser để xóa khi chết
+    private GameObject currentLaser; 
+
     // --- HÀM CHECK MELEE (Gây dame) ---
     public void CheckMeleeHit()
     {
+        // Quét va chạm (Tìm cả Player và Default)
         int targetLayer = LayerMask.GetMask("Default") | LayerMask.GetMask("Player");
         Collider2D[] hits = Physics2D.OverlapCircleAll(meleePoint.position, meleeRadius, targetLayer);
 
         foreach (Collider2D hit in hits)
         {
-            if (hit.CompareTag("Player"))
+            if (hit.CompareTag("Player")) 
             {
                 Debug.Log("BOSS ĐẤM TRÚNG PLAYER!");
-                // Gây dame + Đẩy lùi (truyền transform boss vào)
+                // Gây dame + Đẩy lùi
                 hit.GetComponent<PlayerHealth>()?.TakeDamage(meleeDamage, transform);
             }
         }
     }
 
+    // Vẽ vòng tròn đỏ để dễ chỉnh Melee Point
     void OnDrawGizmosSelected()
     {
         if (meleePoint != null)
@@ -68,7 +73,7 @@ public class MechaGolem_AI : MonoBehaviour
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
-
+        
         bossHealth = GetComponent<BossHealth>();
         currentState = BossState.Idle;
     }
@@ -88,8 +93,6 @@ public class MechaGolem_AI : MonoBehaviour
 
         // Logic Di chuyển (Trôi)
         float distance = Vector2.Distance(transform.position, player.position);
-        
-        // Chỉ trôi khi đang Idle và chưa vào tầm lướt
         if (currentState == BossState.Idle && distance > dashRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
@@ -106,12 +109,19 @@ public class MechaGolem_AI : MonoBehaviour
     {
         isEnraged = true;
         currentState = BossState.Idle;
+
         Debug.Log("BOSS NỔI GIẬN!");
         animator.SetTrigger("Enrage");
         actionCooldown = 1.0f; // Hồi chiêu nhanh hơn
-        spriteRenderer.color = new Color(1f, 0.7f, 0.7f);
+
+        Color enrageColor = new Color(1f, 0.7f, 0.7f);
+        spriteRenderer.color = enrageColor;
+        
+        // Cập nhật màu gốc cho BossHealth
+        if (bossHealth != null) bossHealth.defaultColor = enrageColor;
+
         yield return new WaitForSeconds(1.5f);
-        lastActionTime = Time.time;
+        lastActionTime = Time.time; 
     }
 
     void FacePlayer()
@@ -145,9 +155,11 @@ public class MechaGolem_AI : MonoBehaviour
         {
             if (isEnraged)
             {
-                int rng = Random.Range(0, 2);
-                if (rng == 0) StartCoroutine(ShootArmProjectile());
-                else StartCoroutine(LaserBeamAttack());
+                int rng = Random.Range(0, 100);
+
+                if (rng < 40) StartCoroutine(ShootArmProjectile()); // 40%
+                else if (rng < 70) StartCoroutine(LaserBeamAttack()); // 30%
+                else StartCoroutine(ShieldAbility()); // 30%
             }
             else
             {
@@ -161,14 +173,12 @@ public class MechaGolem_AI : MonoBehaviour
         currentState = BossState.MeleeAttack;
         lastActionTime = Time.time;
 
-        // 1. Lướt tới (Dash)
+        // Lướt tới
         Vector2 targetPos = player.position;
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
-        
-        float dashDuration = 0.5f; 
+        float dashDuration = 0.5f;
         float timer = 0;
 
-        // Lướt cho đến khi hết giờ hoặc đến sát Player (cách 1.5m)
         while (timer < dashDuration && Vector2.Distance(transform.position, player.position) > 1.5f)
         {
             timer += Time.deltaTime;
@@ -176,7 +186,7 @@ public class MechaGolem_AI : MonoBehaviour
             yield return null;
         }
 
-        // 2. Đấm
+        // Đấm
         animator.SetTrigger("Melee");
         yield return new WaitForSeconds(1.0f);
         
@@ -198,7 +208,7 @@ public class MechaGolem_AI : MonoBehaviour
             script.Fire(dir);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); 
         currentState = BossState.Idle;
     }
 
@@ -208,18 +218,57 @@ public class MechaGolem_AI : MonoBehaviour
         lastActionTime = Time.time;
         Debug.Log("Gồng Laser...");
         animator.SetTrigger("Laser");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.0f); 
 
         if (laserPrefab != null && firePoint != null)
         {
-            GameObject laser = Instantiate(laserPrefab, firePoint.position, Quaternion.identity);
-            laser.transform.parent = firePoint;
+            currentLaser = Instantiate(laserPrefab, firePoint.position, Quaternion.identity);
+            currentLaser.transform.parent = firePoint;
             Vector2 direction = (player.position - firePoint.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            laser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            currentLaser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f); 
         currentState = BossState.Idle;
+    }
+
+    System.Collections.IEnumerator ShieldAbility()
+    {
+        currentState = BossState.Shield;
+        lastActionTime = Time.time;
+
+        Debug.Log("Boss bật KHIÊN PHẢN ĐÒN!");
+        animator.SetTrigger("Shield");
+        
+        spriteRenderer.color = Color.cyan; 
+        bossHealth.isInvulnerable = true;
+
+        // Chờ 3 giây (hoặc độ dài anim loop)
+        yield return new WaitForSeconds(3.0f); 
+
+        bossHealth.isInvulnerable = false;
+        
+        // Trả lại màu đúng (Đỏ nếu đang điên, Trắng nếu thường)
+        if (isEnraged)
+        {
+            spriteRenderer.color = new Color(1f, 0.7f, 0.7f);
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
+        
+        // Cập nhật lại cho chắc
+        if (bossHealth != null) bossHealth.defaultColor = spriteRenderer.color;
+
+        currentState = BossState.Idle;
+    }
+
+    public void OnBossDie()
+    {
+        StopAllCoroutines();
+        if (currentLaser != null) Destroy(currentLaser);
+        currentState = BossState.Dead;
     }
 }

@@ -1,106 +1,98 @@
 using UnityEngine;
-using UnityEngine.UI; // Sẽ cần nếu bạn dùng thanh máu UI
+using UnityEngine.UI;
 using TMPro;
+
 public class BossHealth : MonoBehaviour
 {
-    public int maxHealth = 1000;
-    public int currentHealth; // <--- DÒNG NÀY SẼ SỬA LỖI CỦA BẠN
-    [Header("UI Settings")]
+    public int maxHealth = 500; // Golem máu trâu hơn chút
+    public int currentHealth;
 
-    [Header("Level Settings")]
-    public GameObject exitPortal;
+    [Header("UI Settings")]
     public Slider healthSlider;
-    public GameObject healthBarFrame; // Kéo BossHealthFrame vào đây
-    public TextMeshProUGUI bossNameText; // Kéo BossNameText vào đây
-    public Reaper_AI aiScript; // Tham chiếu đến script AI
-    public Animator animator;
-    // public Image healthBar; // Nếu có thanh máu UI, bỏ comment dòng này
+    public GameObject healthBarFrame;
+    public TextMeshProUGUI bossNameText;
+    public GameObject exitPortal; // Cổng thoát (nếu có)
+
+    // --- KHAI BÁO CÁC LOẠI AI CỦA BOSS ---
+    private Reaper_AI reaperAI;
+    private MechaGolem_AI golemAI; 
+    private Animator animator;
 
     void Start()
     {
-        currentHealth = maxHealth; // Đặt máu đầy khi bắt đầu
+        currentHealth = maxHealth;
         
-        // Tự động lấy các component
-        aiScript = GetComponent<Reaper_AI>();
+        // Tự động tìm xem mình đang gắn trên con Boss nào
+        reaperAI = GetComponent<Reaper_AI>();
+        golemAI = GetComponent<MechaGolem_AI>();
         animator = GetComponent<Animator>();
 
+        // Setup UI ban đầu
         if (healthSlider != null)
         {
-            healthSlider.maxValue = maxHealth; // Giá trị tối đa của slider = Máu boss
-            healthSlider.value = currentHealth; // Giá trị hiện tại = Máu đầy
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
         }
-        if (healthBarFrame != null)
-        {
-            healthBarFrame.SetActive(false);
-        }
+        if (healthBarFrame != null) healthBarFrame.SetActive(false);
     }
 
-    // Hàm này sẽ được Player gọi khi tấn công Boss
     public void TakeDamage(int damage, Transform hitTransform)
     {
-        // Nếu boss đã chết, không nhận thêm sát thương
-        if (aiScript.currentState == Reaper_AI.BossState.Dead) return;
-        // HIỆN thanh máu và chữ khi Boss bắt đầu nhận damage
+        // 1. KIỂM TRA XEM BOSS ĐÃ CHẾT CHƯA (Tùy loại boss)
+        if (reaperAI != null && reaperAI.currentState == Reaper_AI.BossState.Dead) return;
+        if (golemAI != null && golemAI.currentState == MechaGolem_AI.BossState.Dead) return;
+
+        // 2. HIỆN UI
         if (healthBarFrame != null && !healthBarFrame.activeSelf)
         {
             healthBarFrame.SetActive(true);
+            // Đặt tên tùy boss (Optional)
+            if (golemAI != null && bossNameText != null) bossNameText.text = "MECHA GOLEM";
         }
+
+        // 3. TRỪ MÁU
         currentHealth -= damage;
-        // CẬP NHẬT SLIDER NGAY LẬP TỨC
-        if (healthSlider != null)
-        {
-            healthSlider.value = currentHealth;
-        }
-        // Cập nhật thanh máu UI (nếu có)
-        // healthBar.fillAmount = (float)currentHealth / maxHealth;
+        if (healthSlider != null) healthSlider.value = currentHealth;
+
+        // Debug.Log("Boss mất " + damage + " máu. Còn: " + currentHealth);
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0; // Tránh máu âm
+            currentHealth = 0;
             Die();
-        }
-        else
-        {
-            // Có thể thêm anim "Hurt" (bị đánh) ở đây nếu muốn
-            // animator.SetTrigger("Hurt");
         }
     }
 
     void Die()
     {
         Debug.Log("Boss đã chết!");
-        // Ẩn thanh máu, khung và chữ khi Boss chết
-        if (healthBarFrame != null)
-        {
-            healthBarFrame.SetActive(false);
-        }
-        // Ẩn thanh máu đi khi Boss chết
-        if (healthSlider != null)
-        {
-            healthSlider.gameObject.SetActive(false);
-        }
-
-        // Hiện cái cổng ra
-        if (exitPortal != null)
-        {
-            exitPortal.SetActive(true); 
-        }
-        // 1. Chuyển trạng thái AI sang Dead
-        aiScript.currentState = Reaper_AI.BossState.Dead;
         
-        // 2. Bóp cò "Die" trong Animator
-        animator.SetTrigger("Die");
+        // Ẩn UI
+        if (healthBarFrame != null) healthBarFrame.SetActive(false);
+        if (healthSlider != null) healthSlider.gameObject.SetActive(false);
 
-        // 3. Tắt va chạm để Player đi xuyên qua
-        GetComponent<Collider2D>().enabled = false;
-        
-        // 4. Tắt Rigidbody (nếu cần)
-        // GetComponent<Rigidbody2D>().simulated = false;
+        // Hiện cổng (nếu có)
+        if (exitPortal != null) exitPortal.SetActive(true);
 
-        // 5. Tắt script AI để boss dừng mọi hành động
-        aiScript.enabled = false;
+        // Chạy Anim Chết
+        if (animator != null) animator.SetTrigger("Die");
 
-        // 6. Hủy GameObject boss sau 5 giây (để chạy xong anim chết)
+        // Tắt va chạm
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+
+        // TẮT AI (Tùy loại boss)
+        if (reaperAI != null)
+        {
+            reaperAI.currentState = Reaper_AI.BossState.Dead;
+            reaperAI.enabled = false;
+        }
+        if (golemAI != null)
+        {
+            golemAI.currentState = MechaGolem_AI.BossState.Dead;
+            golemAI.enabled = false;
+        }
+
         Destroy(gameObject, 5f); 
     }
 }

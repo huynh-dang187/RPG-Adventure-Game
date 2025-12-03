@@ -174,4 +174,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GolemLaser
   damage: 2
-  lifeTime: 2
+  lifeTime: 1
+  knockbackThrust: 40

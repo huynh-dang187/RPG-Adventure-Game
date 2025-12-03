@@ -30,23 +30,22 @@ public class GolemProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // --- QUAN TRỌNG: BỎ QUA BOSS VÀ TRIGGER KHÁC ---
+        // Nếu đạn chạm trúng vật thể có Tag "Enemy" (chính nó) hoặc là Trigger (vùng cảm ứng) thì kệ nó
+        if (other.CompareTag("Enemy") || other.isTrigger) return;
+
         // 1. Kiểm tra va chạm với Player
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Đạn trúng Player!");
-
-            // 2. Gọi hàm gây dame (Cần truyền thêm 'transform' để tính hướng đẩy lùi)
+            // ... (Giữ nguyên code gây dame của bạn) ...
             var health = other.GetComponent<PlayerHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(damage, transform); 
-            }
+            if (health != null) health.TakeDamage(damage, transform);
             
-            // 3. Nổ đạn
             Destroy(gameObject);
         }
-        // 4. Kiểm tra va chạm với Tường (Để đạn không bay xuyên tường)
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Default")) 
+        // 2. Chỉ hủy khi chạm vào TƯỜNG (Cần set Layer hoặc Tag cho tường)
+        // Thay vì check "Default" (quá chung chung), hãy check cụ thể
+        else if (other.CompareTag("Wall") || other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) 
         {
             Destroy(gameObject);
         }

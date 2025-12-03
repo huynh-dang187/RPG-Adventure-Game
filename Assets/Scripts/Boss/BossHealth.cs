@@ -132,6 +132,6 @@ public class BossHealth : MonoBehaviour
             golemAI.enabled = false;
         }
 
-        Destroy(gameObject, 5f); 
+        Destroy(gameObject, 2f); 
     }
 }

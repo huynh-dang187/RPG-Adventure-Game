@@ -18315,6 +18315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaEntrance
   transitionName: SceneStart
+  playerScale: {x: 1, y: 1, z: 1}
 --- !u!222 &4314468165565792702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18800,6 +18801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AreaExit
   sceneToLoad: Scene1
   sceneTransitionName: Scene1
+  waitToLoadTime: 1
 --- !u!198 &5812468395151273616
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -5308,6 +5308,18 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5938554
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5944099
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5944099
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.9775
       objectReference: {fileID: 0}
@@ -7137,7 +7149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1370031579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7270,6 +7282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaEntrance
   transitionName: WEntry
+  playerScale: {x: 1, y: 1, z: 1}
 --- !u!95 &1370031584
 Animator:
   serializedVersion: 7
@@ -9797,6 +9810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaEntrance
   transitionName: WEntry
+  playerScale: {x: 0.5938554, y: 0.5938554, z: 0.5938554}
 --- !u!114 &5018631000719370845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14557,11 +14571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7276087
+      value: -1.8942804
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5845281
+      value: 0.55792487
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.z

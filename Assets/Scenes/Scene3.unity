@@ -12674,6 +12674,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6075975974975622417, guid: 6bc7a266104dec640a8bc2ab2e5cd968, type: 3}
   m_PrefabInstance: {fileID: 1548993950}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &731792990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731792991}
+  - component: {fileID: 731792992}
+  m_Layer: 0
+  m_Name: AreaEntrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &731792991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731792990}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.46, y: -15.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &731792992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731792990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2bb4f2124cbd5428797e7fd4ceb7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AreaEntrance
+  transitionName: Scene3
+  playerScale: {x: 0.5938554, y: 0.5938554, z: 0.5938554}
 --- !u!4 &731819196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1790563547993512414, guid: f7f5a8625f8203849bc6f70f9d1e305a, type: 3}
@@ -14153,11 +14199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4037342
+      value: -0.5023289
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.10474014
+      value: 0.80310345
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14249,11 +14295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.63
+      value: -2.3200006
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.04
+      value: 0.7699995
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15796,7 +15842,6 @@ GameObject:
   - component: {fileID: 1260106331}
   - component: {fileID: 1260106330}
   - component: {fileID: 1260106329}
-  - component: {fileID: 1260106328}
   - component: {fileID: 1260106327}
   m_Layer: 0
   m_Name: ExitPortal
@@ -15822,19 +15867,6 @@ MonoBehaviour:
   suckDuration: 1
   waitToLoadTime: 0.5
   spinWhileSucking: 1
---- !u!114 &1260106328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260106326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2bb4f2124cbd5428797e7fd4ceb7fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AreaEntrance
-  transitionName: Scene3
 --- !u!95 &1260106329
 Animator:
   serializedVersion: 7
@@ -24352,19 +24384,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 640887263389465517, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Size.x
-      value: 0.93838495
+      value: 1.2283686
       objectReference: {fileID: 0}
     - target: {fileID: 640887263389465517, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Size.y
-      value: 0.75795734
+      value: 0.98302734
       objectReference: {fileID: 0}
     - target: {fileID: 640887263389465517, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Offset.x
-      value: -0.16874479
+      value: -0.21571457
       objectReference: {fileID: 0}
     - target: {fileID: 640887263389465517, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Offset.y
-      value: -0.34027457
+      value: -0.22774503
+      objectReference: {fileID: 0}
+    - target: {fileID: 640887263389465517, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2955028655494932901, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Layer
@@ -24408,11 +24444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.97
+      value: 33.28
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.94
+      value: -10.13
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24470,6 +24506,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1622312051}
   - {fileID: 619394802}
+  - {fileID: 731792991}
   - {fileID: 815415427}
   - {fileID: 7627614342813999472}
   - {fileID: 887260538}

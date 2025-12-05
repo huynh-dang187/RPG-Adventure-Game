@@ -213,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 815424164945274260, guid: 7ec262da833a6614ea1c3bc18f547213, type: 3}
+  m_Sprite: {fileID: 1925417606565882268, guid: 7943b80ead2e1754ab7d7412f4e13605, type: 3}
   m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,7 +336,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_SortAtRoot: 0
 --- !u!114 &8331883347377120456
 MonoBehaviour:
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e24df040a798454daa8425d53386a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 7
+  maxHealth: 100
   knockBackThrustAmount: 10
   damageRecoveryTime: 1
 --- !u!114 &4858376666751607962

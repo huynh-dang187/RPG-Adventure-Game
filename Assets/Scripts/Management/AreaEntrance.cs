@@ -9,7 +9,7 @@ public class AreaEntrance : MonoBehaviour
 
     [Header("Cài đặt Nhân vật")]
     [Tooltip("Kích thước nhân vật khi vào Scene này (Mặc định là 1,1,1)")]
-    public Vector3 playerScale = new Vector3(1f, 1f, 1f); // <--- BIẾN MỚI
+    public Vector3 playerScale = new Vector3(1f, 1f, 1f);
 
     private void Start() {
         // --- LUÔN RESET TRẠNG THÁI PLAYER ---
@@ -18,10 +18,8 @@ public class AreaEntrance : MonoBehaviour
             // 1. Bật lại điều khiển
             PlayerController.Instance.enabled = true; 
 
-            // 2. --- ÁP DỤNG KÍCH THƯỚC RIÊNG CHO SCENE NÀY ---
-            // Thay vì dùng Vector3.one, ta dùng biến playerScale do bạn tự điền
+            // 2. Reset Kích thước
             PlayerController.Instance.transform.localScale = playerScale; 
-            // --------------------------------------------------
 
             PlayerController.Instance.transform.rotation = Quaternion.identity;
 
@@ -32,7 +30,15 @@ public class AreaEntrance : MonoBehaviour
                 rb.linearVelocity = Vector2.zero; 
             }
 
-            // 4. Reset Animation
+            // ==========================================================
+            // [THÊM MỚI] 4. QUAN TRỌNG: RESET LAYER VỀ "PLAYER"
+            // ==========================================================
+            // Đảm bảo tên layer trong Unity của bạn là "Player" (viết hoa chữ P)
+            PlayerController.Instance.gameObject.layer = LayerMask.NameToLayer("Default");
+            Debug.Log("AreaEntrance: Đã reset Layer nhân vật về Player!");
+            // ==========================================================
+
+            // 5. Reset Animation
             Animator anim = PlayerController.Instance.GetComponent<Animator>();
             if (anim != null) {
                 anim.SetFloat("moveX", 0);

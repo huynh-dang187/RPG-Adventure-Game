@@ -7,10 +7,7 @@ public class CameraSwitcher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug xem cái gì vừa chạm vào
-        Debug.Log("Va chạm với: " + other.gameObject.name);
-
-        // Code kiểm tra Player chuẩn
+        // Kiểm tra Player chuẩn
         if (other.CompareTag("Player") || (other.attachedRigidbody != null && other.attachedRigidbody.CompareTag("Player")))
         {
             Debug.Log("--> Kích hoạt Camera: " + targetCam.name);
@@ -18,7 +15,15 @@ public class CameraSwitcher : MonoBehaviour
             var allCameras = FindObjectsOfType<CinemachineVirtualCamera>();
             foreach (var cam in allCameras) cam.Priority = 0;
 
-            if (targetCam != null) targetCam.Priority = 10;
+            if (targetCam != null) 
+            {
+                targetCam.Priority = 10;
+                
+                // --- DÒNG QUAN TRỌNG CẦN THÊM ---
+                // Tự động bắt Camera phải đi theo Player vừa chạm vào trigger
+                targetCam.Follow = other.transform; 
+                // --------------------------------
+            }
         }
     }
 }

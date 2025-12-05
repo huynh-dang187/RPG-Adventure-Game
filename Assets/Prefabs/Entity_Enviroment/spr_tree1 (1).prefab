@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6829779403687111875}
   - component: {fileID: 576179802642825271}
   - component: {fileID: 3677201014938452022}
+  - component: {fileID: -3002009622683868565}
   m_Layer: 0
   m_Name: spr_tree1 (1)
   m_TagString: Untagged
@@ -141,3 +142,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f099baab5e8eb44998a3bf51637c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Indestructible
+--- !u!114 &-3002009622683868565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691373697421754074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18875cb01d2148946a547a05b6574df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransparentDetection
+  transparencyAmount: 0.901
+  fadeTime: 0.4

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8356242733020913847}
   - component: {fileID: 284698576040495538}
   - component: {fileID: 9077565751684061668}
+  - component: {fileID: -4392693710141807023}
   m_Layer: 0
   m_Name: spr_tree1
   m_TagString: Untagged
@@ -128,3 +129,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.013376236, y: 0.87986255}
   m_Size: {x: 1.4460163, y: 1.4460163}
   m_Direction: 1
+--- !u!114 &-4392693710141807023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047432689269484110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18875cb01d2148946a547a05b6574df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransparentDetection
+  transparencyAmount: 0.901
+  fadeTime: 0.4

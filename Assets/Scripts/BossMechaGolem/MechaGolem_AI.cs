@@ -21,15 +21,14 @@ public class MechaGolem_AI : MonoBehaviour
     [Header("Melee Settings")]
     public Transform meleePoint;
     public float meleeRadius = 2f;
-    public int meleeDamage = 20;
+    public int meleeDamage = 1; // Đã sửa về 1 cho hợp lý với 3 máu
 
     [Header("Stats")]
-    public float moveSpeed = 2f;
+    public float moveSpeed = 4f; // Sửa lại theo ảnh bạn gửi
     public float dashSpeed = 15f;
-    public float meleeRange = 3f;
-    public float dashRange = 6f;
+    public float dashRange = 5f;
     public float shootRange = 10f;
-    public float laserRange = 15f;
+    // public float laserRange = 15f; // Tạm không dùng
 
     [Header("Cooldowns")]
     public float actionCooldown = 2f;
@@ -43,8 +42,8 @@ public class MechaGolem_AI : MonoBehaviour
     // --- LOGIC GÂY SÁT THƯƠNG CẬN CHIẾN (Gắn vào Animation Event) ---
     public void CheckMeleeHit()
     {
-        int targetLayer = LayerMask.GetMask("Default") | LayerMask.GetMask("Player");
-        Collider2D[] hits = Physics2D.OverlapCircleAll(meleePoint.position, meleeRadius, targetLayer);
+        // Quét tất cả layer để chắc chắn trúng Player dù Player đang ở Layer nào
+        Collider2D[] hits = Physics2D.OverlapCircleAll(meleePoint.position, meleeRadius);
 
         foreach (Collider2D hit in hits)
         {
@@ -67,65 +66,62 @@ public class MechaGolem_AI : MonoBehaviour
 
     void Start()
     {
-        // Tự tìm Player khi bắt đầu (Quan trọng để fix lỗi mất Player khi chuyển Scene)
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
-        else Debug.LogWarning("Boss không tìm thấy Player! Kiểm tra Tag 'Player' chưa?");
+        else Debug.LogWarning("Boss không tìm thấy Player!");
 
         bossHealth = GetComponent<BossHealth>();
-
-        // Bắt đầu là NGỦ
         currentState = BossState.Sleeping;
     }
 
     void Update()
     {
         if (player == null || currentState == BossState.Dead) return;
-
-        // --- NẾU ĐANG NGỦ THÌ KHÔNG LÀM GÌ CẢ ---
         if (currentState == BossState.Sleeping) return;
-        // ----------------------------------------
 
+        // Nếu còn ít máu thì hóa điên
         if (!isEnraged && bossHealth.currentHealth < (bossHealth.maxHealth * 0.5f))
         {
             StartCoroutine(EnrageRoutine());
             return;
         }
 
-        // Chỉ quay mặt khi Đang rảnh (Idle) hoặc Đang chạy bộ
-        // Khi đang Đấm, Bắn Laser, Bật khiên -> KHÔNG quay mặt loạn xạ
+        // Chỉ di chuyển khi ĐANG RẢNH (Idle)
         if (currentState == BossState.Idle)
         {
+            float distance = Vector2.Distance(transform.position, player.position);
+
+            // Luôn đi bộ theo Player nếu ở xa hơn tầm dừng (ví dụ 3.0f)
+            if (distance > 3.0f)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            }
+
             FacePlayer();
-        }
 
-        // Di chuyển tới Player nếu ở xa
-        float distance = Vector2.Distance(transform.position, player.position);
-        if (currentState == BossState.Idle && distance > dashRange)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
-        }
-
-        // Quyết định đòn đánh
-        if (Time.time > lastActionTime + actionCooldown && currentState == BossState.Idle)
-        {
-            DecideNextMove();
+            // Hồi chiêu xong thì ra quyết định
+            if (Time.time > lastActionTime + actionCooldown)
+            {
+                DecideNextMove();
+            }
         }
     }
 
-    // --- HÀM NÀY SẼ ĐƯỢC GỌI TỪ TRIGGER CỬA ---
     public void WakeUp()
     {
         if (currentState == BossState.Sleeping)
         {
-            Debug.Log("KẺ XÂM NHẬP! BOSS TỈNH GIẤC!");
-            currentState = BossState.Idle; // Bắt đầu chiến đấu
-            lastActionTime = Time.time + 1f; // Chờ 1 giây rồi mới đánh
+            Debug.Log("BOSS TỈNH GIẤC!");
+            currentState = BossState.Idle;
+            lastActionTime = Time.time + 1f;
         }
     }
 
     void FacePlayer()
     {
+        // Chỉ quay mặt khi Rảnh hoặc đang chạy
+        if (currentState != BossState.Idle) return; 
+
         float firePointX = Mathf.Abs(firePoint.localPosition.x);
         if (player.position.x > transform.position.x)
         {
@@ -137,169 +133,212 @@ public class MechaGolem_AI : MonoBehaviour
         {
             spriteRenderer.flipX = true;
             firePoint.localPosition = new Vector2(-firePointX, firePoint.localPosition.y);
-            firePoint.localRotation = Quaternion.Euler(0, 180, 0); // Quay họng súng ngược lại
+            firePoint.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
+    // --- PHẦN NÃO BỘ: QUYẾT ĐỊNH CHIÊU THỨC ---
+    // --- PHẦN NÃO BỘ: QUYẾT ĐỊNH CHIÊU THỨC (ĐÃ CẬP NHẬT) ---
     void DecideNextMove()
     {
         float distance = Vector2.Distance(transform.position, player.position);
-        
-        // Nếu Player ở quá gần -> Đấm
-        if (distance <= meleeRange) // Sửa dashRange thành meleeRange cho hợp lý hơn
+
+        // 1. Quá xa (> 10m): Boss tự đi bộ lại gần
+        if (distance > shootRange) return;
+
+        // 2. TẦM TRUNG (Từ 5m -> 10m)
+        if (distance > dashRange)
         {
-            StartCoroutine(MeleeAttack());
-        }
-        else
-        {
+            // --- LOGIC KHI HÓA ĐIÊN (ENRAGED) ---
             if (isEnraged)
             {
+                // Luôn bắn Shotgun thay vì đạn thường
                 int rng = Random.Range(0, 100);
-                if (rng < 40) StartCoroutine(ShootArmProjectile());
-                else if (rng < 70) StartCoroutine(LaserBeamAttack());
-                else StartCoroutine(ShieldAbility());
+                if (rng < 70) 
+                {
+                    Debug.Log("Enraged: Xả Shotgun liên tục!");
+                    StartCoroutine(ShotgunAttack()); 
+                }
+                else 
+                {
+                    // Vẫn giữ 30% lao vào đấm để gây áp lực
+                    StartCoroutine(MeleeAttack()); 
+                }
             }
+            // --- LOGIC KHI BÌNH THƯỜNG ---
             else
             {
-                StartCoroutine(ShootArmProjectile());
+                // Tỉ lệ 1 viên cao hơn (70%)
+                int rng = Random.Range(0, 100);
+                if (rng < 70) 
+                {
+                    Debug.Log("Normal: Bắn tỉa 1 viên");
+                    StartCoroutine(ShootArmProjectile()); 
+                }
+                else 
+                {
+                    Debug.Log("Normal: Bắn Shotgun (Hiếm)");
+                    StartCoroutine(ShotgunAttack()); 
+                }
+            }
+        }
+        
+        // 3. TẦM GẦN (< 5m)
+        else 
+        {
+            // Ở gần thì Boss luôn ưu tiên Đấm, thi thoảng bắn Shotgun vào mặt
+            // (Không thay đổi nhiều vì ở gần bắn 1 viên rất yếu)
+            int rng = Random.Range(0, 100);
+            if (rng < 70) 
+            {
+                StartCoroutine(MeleeAttack()); // 70% Đấm
+            }
+            else 
+            {
+                StartCoroutine(ShotgunAttack()); // 30% Shotgun vào mặt
             }
         }
     }
 
+    // --- CÁC CHIÊU THỨC ---
+
+    // 1. Hóa điên
     System.Collections.IEnumerator EnrageRoutine()
     {
         isEnraged = true;
-        currentState = BossState.Idle; // Reset state tạm thời để tránh kẹt
+        currentState = BossState.Idle;
         animator.SetTrigger("Enrage");
-        actionCooldown = 1.0f; // Giảm hồi chiêu khi điên lên
+        actionCooldown = 1.0f; // Tăng tốc độ đánh
 
-        Color enrageColor = new Color(1f, 0.7f, 0.7f); // Đỏ nhạt
+        Color enrageColor = new Color(1f, 0.7f, 0.7f);
         spriteRenderer.color = enrageColor;
         if (bossHealth != null) bossHealth.defaultColor = enrageColor;
 
-        yield return new WaitForSeconds(1.5f); // Thời gian gầm rú
+        yield return new WaitForSeconds(1.5f);
         lastActionTime = Time.time;
     }
 
+    // 2. Đấm (Melee) + Combo bắn bồi
     System.Collections.IEnumerator MeleeAttack()
     {
         currentState = BossState.MeleeAttack;
         lastActionTime = Time.time;
 
-        // Xác định hướng lao tới 1 lần duy nhất lúc bắt đầu
+        // Lao tới
         Vector2 targetPos = player.position;
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
-
-        // Quay mặt về phía mục tiêu trước khi lao
-        if (direction.x > 0) spriteRenderer.flipX = false;
-        else spriteRenderer.flipX = true;
-
-        float dashDuration = 0.5f;
         float timer = 0;
+        
+        // Quay mặt theo hướng lao
+        if (direction.x > 0) spriteRenderer.flipX = false; else spriteRenderer.flipX = true;
 
-        // Lao tới vị trí (Dash)
-        while (timer < dashDuration && Vector2.Distance(transform.position, player.position) > 1.0f)
+        while (timer < 0.5f && Vector2.Distance(transform.position, player.position) > 1.0f)
         {
             timer += Time.deltaTime;
             transform.position += (Vector3)direction * dashSpeed * Time.deltaTime;
             yield return null;
         }
 
-        animator.SetTrigger("Melee"); // Chạy Animation đấm
-        yield return new WaitForSeconds(1.0f); // Thời gian Animation đấm xong
+        animator.SetTrigger("Melee");
+        yield return new WaitForSeconds(1.0f); // Thời gian animation đấm
+
+        // --- COMBO: Đấm xong mà Player vẫn lỳ ở gần thì BẮN BỒI ---
+        float distAfterPunch = Vector2.Distance(transform.position, player.position);
+        if (distAfterPunch < 4.0f)
+        {
+            Debug.Log("Combo: Đấm xong bắn bồi!");
+            SpawnProjectile(0);   // Bắn 1 viên thẳng
+            yield return new WaitForSeconds(0.3f);
+        }
+
         currentState = BossState.Idle;
     }
 
+    // 3. Bắn thường (Có tính toán đón đầu)
     System.Collections.IEnumerator ShootArmProjectile()
     {
-        currentState = BossState.LaserAttack; // Dùng chung state attack xa
+        currentState = BossState.LaserAttack;
         lastActionTime = Time.time;
         
-        // Quay mặt về player trước khi bắn
-        FacePlayer();
+        // FacePlayer() ở đây bị bỏ qua để tránh xoay người khi đang bắn, 
+        // nhưng nên xoay 1 lần trước khi bắn:
+        if (player.position.x > transform.position.x) spriteRenderer.flipX = false;
+        else spriteRenderer.flipX = true;
 
         animator.SetTrigger("Shoot");
-        yield return new WaitForSeconds(0.5f); // Chờ animation giơ tay lên
+        yield return new WaitForSeconds(0.5f);
 
         if (projectilePrefab != null && firePoint != null)
         {
             GameObject bullet = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             GolemProjectile script = bullet.GetComponent<GolemProjectile>();
+
+            // Tính toán bắn đón đầu
+            Vector2 targetPos = player.position;
+            Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
             
-            // Tính hướng bắn
-            Vector2 dir = (player.position - transform.position).normalized;
+            // LƯU Ý: Nếu Unity báo lỗi linearVelocity, hãy đổi thành velocity
+            if (playerRb != null)
+            {
+                float timeToHit = Vector2.Distance(transform.position, player.position) / 10f;
+                // Nếu dùng Unity cũ (2022 trở xuống) đổi dòng dưới thành playerRb.velocity
+                targetPos = (Vector2)player.position + (playerRb.linearVelocity * timeToHit * 0.5f); 
+            }
+
+            Vector2 dir = (targetPos - (Vector2)firePoint.position).normalized;
             script.Fire(dir);
         }
-
-        yield return new WaitForSeconds(1f); // Hồi phục sau khi bắn
+        
+        yield return new WaitForSeconds(1f);
         currentState = BossState.Idle;
     }
 
-    System.Collections.IEnumerator LaserBeamAttack()
+    // 4. Bắn Shotgun (3 viên tỏa ra)
+    System.Collections.IEnumerator ShotgunAttack()
     {
         currentState = BossState.LaserAttack;
         lastActionTime = Time.time;
         
-        // Quay mặt về player chuẩn bị bắn
-        FacePlayer();
+        if (player.position.x > transform.position.x) spriteRenderer.flipX = false;
+        else spriteRenderer.flipX = true;
 
-        Debug.Log("Gồng Laser...");
-        animator.SetTrigger("Laser"); // Animation gồng
-        yield return new WaitForSeconds(1.0f); // Thời gian gồng
-
-        // BẮN LASER
-        if (laserPrefab != null && firePoint != null)
-        {
-            currentLaser = Instantiate(laserPrefab, firePoint.position, Quaternion.identity);
-            currentLaser.transform.parent = firePoint; // Gắn laser vào tay boss
-
-            // Xoay laser về phía player
-            Vector2 direction = (player.position - firePoint.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            currentLaser.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        yield return new WaitForSeconds(2.5f); // Thời gian duy trì tia Laser
-
-        // TẮT LASER (Quan trọng: Xóa laser sau khi bắn xong)
-        if (currentLaser != null) Destroy(currentLaser);
-
+        animator.SetTrigger("Shoot");
+        yield return new WaitForSeconds(0.5f);
+        
+        // Bắn 3 viên: -15 độ, 0 độ, +15 độ
+        SpawnProjectile(0);
+        SpawnProjectile(15);
+        SpawnProjectile(-15);
+        
+        if (isEnraged)
+    {
+        SpawnProjectile(30);  // Trái rộng
+        SpawnProjectile(-30); // Phải rộng
+    }
+        yield return new WaitForSeconds(1f);
         currentState = BossState.Idle;
     }
 
-    System.Collections.IEnumerator ShieldAbility()
+    // Hàm phụ trợ để sinh đạn
+    void SpawnProjectile(float angleOffset)
     {
-        currentState = BossState.Shield;
-        lastActionTime = Time.time;
-
-        Debug.Log("Boss bật KHIÊN PHẢN ĐÒN!");
-        animator.SetTrigger("Shield");
-        
-        // Đổi màu để báo hiệu bật khiên
-        spriteRenderer.color = Color.cyan;
-        bossHealth.isInvulnerable = true;
-
-        yield return new WaitForSeconds(3.0f); // Thời gian khiên tồn tại
-
-        // Tắt khiên
-        bossHealth.isInvulnerable = false;
-        
-        // Trả lại màu cũ (tùy xem đang điên hay bình thường)
-        if (isEnraged) spriteRenderer.color = new Color(1f, 0.7f, 0.7f);
-        else spriteRenderer.color = Color.white;
-        
-        if (bossHealth != null) bossHealth.defaultColor = spriteRenderer.color;
-
-        currentState = BossState.Idle;
+        if (projectilePrefab != null && firePoint != null)
+        {
+            GameObject bullet = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            GolemProjectile script = bullet.GetComponent<GolemProjectile>();
+            
+            Vector2 dir = (player.position - transform.position).normalized;
+            // Xoay hướng bắn
+            dir = Quaternion.Euler(0, 0, angleOffset) * dir;
+            
+            script.Fire(dir);
+        }
     }
 
     public void OnBossDie()
     {
         StopAllCoroutines();
-        // Đảm bảo xóa laser nếu chết lúc đang bắn
         if (currentLaser != null) Destroy(currentLaser);
-        
         currentState = BossState.Dead;
-        // Các logic chết khác (rơi đồ, hiện UI thắng...) sẽ ở bên BossHealth gọi hoặc xử lý ở đây
     }
 }

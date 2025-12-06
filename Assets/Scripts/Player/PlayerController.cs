@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : Singleton<PlayerController>
 {
     public bool FacingLeft { get { return facingLeft; } }
-    
+    public bool isLocked = false; // --- MỚI: Biến khóa di chuyển ---
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float dashSpeed = 4f;
@@ -50,6 +50,12 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Update() {
+        if (isLocked) 
+        {
+            // Reset vận tốc về 0 để nhân vật đứng im ngay lập tức (nếu dùng Rigidbody)
+            GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; 
+            return; 
+        }
         PlayerInput();
     }
 

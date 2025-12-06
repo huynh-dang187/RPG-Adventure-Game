@@ -35,6 +35,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private void Update()
     {
+        if (PlayerController.Instance.isLocked) return;
         Attack();
     }
 

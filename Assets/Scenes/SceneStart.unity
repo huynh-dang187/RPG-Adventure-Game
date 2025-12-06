@@ -10552,6 +10552,7 @@ GameObject:
   - component: {fileID: 1431019062}
   - component: {fileID: 1431019061}
   - component: {fileID: 1431019063}
+  - component: {fileID: 1431019064}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -10718,10 +10719,61 @@ MonoBehaviour:
     npcName: SingFu
     portrait: {fileID: -4249693664008208716, guid: 0bd3e6e0fe7e72344a105a5782bc846a, type: 3}
     sentences:
-    - "\"Ch\xE0o hi\u1EC7p s\u0129 tr\u1EBB! C\u1EADu t\u1EEB \u0111\xE2u t\u1EDBi?\""
-    - "Ng\xF4i \u0111\u1EC1n ph\xEDa tr\u01B0\u1EDBc nguy hi\u1EC3m l\u1EAFm..."
-    - "H\xE3y c\u1EA7m l\u1EA5y thanh ki\u1EBFm n\xE0y!"
+    - "H\u1EE1i l\u1EEF kh\xE1ch! D\u1EEBng l\u1EA1i ngay! Ph\xEDa tr\u01B0\u1EDBc
+      l\xE0 C\u1EA5m \u0110\u1ECBa"
+    - "Ng\xF4i \u0111\u1EC1n c\u1ED5 x\u01B0a \u0111ang rung chuy\u1EC3n... Ta e
+      r\u1EB1ng \"Th\u1EE9 \u0110\xF3\" \u0111\xE3 th\u1EE9c gi\u1EA5c"
+    - "M\u1ED9t c\u1ED7 m\xE1y h\u1EE7y di\u1EC7t t\u1EEB ng\xE0n x\u01B0a, \u0111\u01B0\u1EE3c
+      canh gi\u1EEF b\u1EDFi T\u1EED Th\u1EA7n"
+    - "N\u1EBFu c\u1EADu \u0111\u1EE7 d\u0169ng c\u1EA3m, h\xE3y c\u1EA7m l\u1EA5y
+      th\u1EE9 n\xE0y v\xE0 gi\u1EA3i tho\xE1t cho ch\xFAng t\xF4i!"
   pressE_Icon: {fileID: 1815462419}
+--- !u!61 &1431019064
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431019058}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.03125, y: 1.4375}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4705882, y: 0}
+    oldSize: {x: 1.0625, y: 2.875}
+    newSize: {x: 1.0625, y: 2.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.0625, y: 2.875}
+  m_EdgeRadius: 0
 --- !u!1 &1530777737
 GameObject:
   m_ObjectHideFlags: 0

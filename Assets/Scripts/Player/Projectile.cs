@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,12 +5,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float moveSpeed = 22f;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
     [SerializeField] private bool isEnemyProjectile = false;
-    [SerializeField] private float projectileRange = 10f;
+    [SerializeField] private float projectileRange = 10f; // Biến tầm bắn mặc định
 
-    private Vector3 startPosition;
+    private Vector3 startPos;
 
-    private void Start() {
-        startPosition = transform.position;
+    private void Start()
+    {
+        startPos = transform.position;
     }
 
     private void Update()
@@ -21,40 +20,56 @@ public class Projectile : MonoBehaviour
         DetectFireDistance();
     }
 
-    public void UpdateProjectileRange(float projectileRange){
-        this.projectileRange = projectileRange;
-    }
-
+    // --- HÀM 1: Dùng cho Enemy (Shooter) ---
     public void UpdateMoveSpeed(float moveSpeed)
     {
         this.moveSpeed = moveSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-        Indestructible indestructible = other.gameObject.GetComponent<Indestructible>();
-        PlayerHealth player = other.gameObject.GetComponent<PlayerHealth>();
-
-        if (!other.isTrigger && (enemyHealth || indestructible || player)) {
-            if ((player && isEnemyProjectile) || (enemyHealth && !isEnemyProjectile)) {
-                player?.TakeDamage(1, transform);
-                Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-                Destroy(gameObject);
-            } else if (!other.isTrigger && indestructible) {
-                Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void DetectFireDistance() {
-        if (Vector3.Distance(transform.position, startPosition) > projectileRange) {
-            Destroy(gameObject);
-        }
+    // --- HÀM 2: Dùng cho Cung (Bow) - BẠN ĐANG THIẾU CÁI NÀY ---
+    public void UpdateProjectileRange(float range)
+    {
+        this.projectileRange = range;
     }
 
     private void MoveProjectile()
     {
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+    }
+
+    private void DetectFireDistance()
+    {
+        if (Vector3.Distance(transform.position, startPos) > projectileRange)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Logic xử lý va chạm (Giữ nguyên như cũ)
+        // Nếu là đạn của Player
+        if (!isEnemyProjectile) 
+        {
+             // Trúng Enemy
+             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+             if(enemyHealth) { enemyHealth.TakeDamage(1); Destroy(gameObject); }
+        }
+        else // Nếu là đạn của Enemy
+        {
+             // Trúng Player
+             if (other.CompareTag("Player"))
+             {
+                 PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+                 if (playerHealth) playerHealth.TakeDamage(1, transform);
+                 Destroy(gameObject);
+             }
+        }
+
+        // Trúng tường thì nổ
+        if (!other.isTrigger && (other.CompareTag("Wall") || other.gameObject.layer == LayerMask.NameToLayer("Default")))
+        {
+            Destroy(gameObject);
+        }
     }
 }

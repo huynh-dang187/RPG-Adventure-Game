@@ -5,27 +5,26 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float roamChangeDirFloat = 2f;
-    [SerializeField] private float attackRange = 0f;
+    [SerializeField] private float attackRange = 5f; // SỬA: Mặc định là 5 để đỡ quên
     [SerializeField] private MonoBehaviour enemyType;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
 
     private bool canAttack = true;
-
-    private enum State {
-        Roaming, 
-        Attacking
-    }
-
+    private enum State { Roaming, Attacking }
     private Vector2 roamPosition;
     private float timeRoaming = 0f;
-
     private State state;
     private EnemyPathfinding enemyPathfinding;
 
     private void Awake() {
         enemyPathfinding = GetComponent<EnemyPathfinding>();
         state = State.Roaming;
+
+        // TỰ ĐỘNG TÌM COMPONENT NẾU QUÊN KÉO
+        if (enemyType == null) {
+            enemyType = GetComponent<IEnemy>() as MonoBehaviour;
+        }
     }
 
     private void Start() {
@@ -37,45 +36,44 @@ public class EnemyAI : MonoBehaviour
     }
 
     private void MovementStateControl() {
-        switch (state)
-        {
+        switch (state) {
             default:
-            case State.Roaming:
-                Roaming();
-            break;
-
-            case State.Attacking:
-                Attacking();
-            break;
+            case State.Roaming: Roaming(); break;
+            case State.Attacking: Attacking(); break;
         }
     }
 
     private void Roaming() {
         timeRoaming += Time.deltaTime;
-
         enemyPathfinding.MoveTo(roamPosition);
 
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
+        // Kiểm tra Player để chuyển sang tấn công
+        if (PlayerController.Instance != null && 
+            Vector2.Distance(transform.position, PlayerController.Instance.transform.position) < attackRange) {
             state = State.Attacking;
         }
 
         if (timeRoaming > roamChangeDirFloat) {
             roamPosition = GetRoamingPosition();
-            SoundManager.Instance.PlaySound3D("Slime_Move", transform.position);//slime moving sound effect AI please dont delete it
-
+            // SoundManager.Instance.PlaySound3D("Slime_Move", transform.position);
         }
     }
 
     private void Attacking() {
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange)
-        {
+        if (PlayerController.Instance == null) return;
+
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > attackRange) {
             state = State.Roaming;
         }
 
-        if (attackRange != 0 && canAttack) {
-
+        // Bỏ điều kiện attackRange != 0 để tránh lỗi logic nếu người dùng lỡ để 0
+        if (canAttack) {
             canAttack = false;
-            (enemyType as IEnemy).Attack();
+            
+            // Kiểm tra null để tránh crash game
+            if (enemyType is IEnemy enemy) {
+                enemy.Attack();
+            }
 
             if (stopMovingWhileAttacking) {
                 enemyPathfinding.StopMoving();

@@ -5,30 +5,18 @@ using UnityEngine;
 public class Shooter : MonoBehaviour, IEnemy
 {
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletMoveSpeed;
-    [SerializeField] private int burstCount;
-    [SerializeField] private int projectilesPerBurst;
-    [SerializeField][Range(0, 359)] private float angleSpread;
-    [SerializeField] private float startingDistance = 0.1f;
-    [SerializeField] private float timeBetweenBursts;
+    [SerializeField] private float bulletMoveSpeed = 6f; // Tốc độ mặc định > 0
+    [SerializeField] private int burstCount = 1;
+    [SerializeField] private int projectilesPerBurst = 3;
+    [SerializeField][Range(0, 359)] private float angleSpread = 30f;
+    [SerializeField] private float startingDistance = 0.7f; 
+    [SerializeField] private float timeBetweenBursts = 1f;
     [SerializeField] private float restTime = 1f;
     [SerializeField] private bool stagger;
     [Tooltip("Stagger must be enabled for oscillate to function properly.")]
     [SerializeField] private bool oscillate;
 
     private bool isShooting = false;
-
-    private void OnValidate() {
-        if (oscillate) { stagger = true; }
-        if (!oscillate) { stagger = false; }
-        if (projectilesPerBurst < 1) { projectilesPerBurst = 1; }
-        if (burstCount < 1) { burstCount = 1; }
-        if (timeBetweenBursts < 0.1f) { timeBetweenBursts = 0.1f; }
-        if (restTime < 0.1f) { restTime = 0.1f; }
-        if (startingDistance < 0.1f) { startingDistance = 0.1f; }
-        if (angleSpread == 0) { projectilesPerBurst = 1; }
-        if (bulletMoveSpeed <= 0) { bulletMoveSpeed = 0.1f; }
-    }
 
     public void Attack() {
         if (!isShooting) {
@@ -45,14 +33,16 @@ public class Shooter : MonoBehaviour, IEnemy
 
         TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
 
-        if (stagger) { timeBetweenProjectiles = timeBetweenBursts / projectilesPerBurst; }
+        if (stagger) { timeBetweenProjectiles = timeBetweenBursts / Mathf.Max(1, projectilesPerBurst); }
 
         for (int i = 0; i < burstCount; i++)
         {
+            // Cập nhật góc bắn mỗi đợt
             if (!oscillate) {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
             } 
             
+            // Logic Lắc lư (Wiper/Oscillate) - Giữ nguyên logic cũ của bạn
             if (oscillate && i % 2 != 1) {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
             } else if (oscillate) {
@@ -62,15 +52,16 @@ public class Shooter : MonoBehaviour, IEnemy
                 angleStep *= -1;
             }
 
-
             for (int j = 0; j < projectilesPerBurst; j++)
             {
                 Vector2 pos = FindBulletSpawnPos(currentAngle);
 
+                // --- QUAY VỀ CÁCH CŨ CỦA BẠN ---
                 GameObject newBullet = Instantiate(bulletPrefab, pos, Quaternion.identity);
-                newBullet.transform.right = newBullet.transform.position - transform.position;
-
-            
+                
+                // Dòng này giúp đạn hướng đầu về phía bắn (như cũ)
+                newBullet.transform.right = newBullet.transform.position - transform.position; 
+                
                 if (newBullet.TryGetComponent(out Projectile projectile))
                 {
                     projectile.UpdateMoveSpeed(bulletMoveSpeed);
@@ -92,14 +83,21 @@ public class Shooter : MonoBehaviour, IEnemy
 
     private void TargetConeOfInfluence(out float startAngle, out float currentAngle, out float angleStep, out float endAngle)
     {
-        Vector2 targetDirection = PlayerController.Instance.transform.position - transform.position;
+        Vector2 targetDirection = Vector2.right;
+        // Thêm kiểm tra null Player để không bị lỗi đỏ lòm
+        if (PlayerController.Instance != null) {
+            targetDirection = PlayerController.Instance.transform.position - transform.position;
+        }
+        
         float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         startAngle = targetAngle;
         endAngle = targetAngle;
         currentAngle = targetAngle;
         float halfAngleSpread = 0f;
         angleStep = 0;
-        if (angleSpread != 0)
+
+        // Vẫn giữ fix lỗi "Chia cho 0"
+        if (angleSpread != 0 && projectilesPerBurst > 1)
         {
             angleStep = angleSpread / (projectilesPerBurst - 1);
             halfAngleSpread = angleSpread / 2f;
@@ -112,9 +110,6 @@ public class Shooter : MonoBehaviour, IEnemy
     private Vector2 FindBulletSpawnPos(float currentAngle) {
         float x = transform.position.x + startingDistance * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
         float y = transform.position.y + startingDistance * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
-
-        Vector2 pos = new Vector2(x, y);
-
-        return pos;
+        return new Vector2(x, y);
     }
 }

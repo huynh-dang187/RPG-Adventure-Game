@@ -154,8 +154,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.009544849}
-  m_Radius: 0.32819277
+  m_Offset: {x: -0.007237911, y: -0.009544849}
+  m_Radius: 0.3933342
 --- !u!114 &1722257781986990116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +182,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.44992796
-      value: 0.35010955
+      time: 0.3966654
+      value: 0.40345985
       inSlope: -0.0075519537
       outSlope: -0.0075519537
       tangentMode: 0
@@ -191,8 +191,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.0424302
-      value: 0.005847256
+      time: 0.9498157
+      value: 0.0021899417
       inSlope: -0.9536829
       outSlope: -0.9536829
       tangentMode: 0

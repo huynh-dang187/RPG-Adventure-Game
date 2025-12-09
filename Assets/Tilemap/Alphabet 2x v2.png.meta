@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: 0e9c9fc008f16704a8157c93be8dbeb9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4919184334073428652
+    second: Alphabet 2x v2_0
+  - first:
+      213: -7294266007751639088
+    second: Alphabet 2x v2_1
+  - first:
+      213: 1023526041590016206
+    second: Alphabet 2x v2_2
+  - first:
+      213: 9220353040609738079
+    second: Alphabet 2x v2_3
+  - first:
+      213: -3281808441985273469
+    second: Alphabet 2x v2_4
+  - first:
+      213: 5043135581156622037
+    second: Alphabet 2x v2_5
+  - first:
+      213: 2302949489395930055
+    second: Alphabet 2x v2_6
+  - first:
+      213: -6970973513380927751
+    second: Alphabet 2x v2_7
+  - first:
+      213: 189968440032679853
+    second: Alphabet 2x v2_8
+  - first:
+      213: -2181329933597334147
+    second: Alphabet 2x v2_9
+  - first:
+      213: 3822798285685253797
+    second: Alphabet 2x v2_10
+  - first:
+      213: -5657499058550806155
+    second: Alphabet 2x v2_11
+  - first:
+      213: 4736069416973524077
+    second: Alphabet 2x v2_12
+  - first:
+      213: 8906977099946668755
+    second: Alphabet 2x v2_13
+  - first:
+      213: -2555259088560036602
+    second: Alphabet 2x v2_14
+  - first:
+      213: 1042073587099121245
+    second: Alphabet 2x v2_15
+  - first:
+      213: -6205189950941923954
+    second: Alphabet 2x v2_16
+  - first:
+      213: 1342135036877753947
+    second: Alphabet 2x v2_17
+  - first:
+      213: 2276784238514010579
+    second: Alphabet 2x v2_18
+  - first:
+      213: 5317500713135481430
+    second: Alphabet 2x v2_19
+  - first:
+      213: -4416711345314731939
+    second: Alphabet 2x v2_20
+  - first:
+      213: -3948915336806855130
+    second: Alphabet 2x v2_21
+  - first:
+      213: -6506806168790290087
+    second: Alphabet 2x v2_22
+  - first:
+      213: 3893042098639649302
+    second: Alphabet 2x v2_23
+  - first:
+      213: -2230694484669930296
+    second: Alphabet 2x v2_24
+  - first:
+      213: -8179310861458096446
+    second: Alphabet 2x v2_25
+  - first:
+      213: -3578380831985258203
+    second: Alphabet 2x v2_26
+  - first:
+      213: -1315139664786610762
+    second: Alphabet 2x v2_27
+  - first:
+      213: -8896646955549537457
+    second: Alphabet 2x v2_28
+  - first:
+      213: -2104227858773973640
+    second: Alphabet 2x v2_29
+  - first:
+      213: 3790200562496842565
+    second: Alphabet 2x v2_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Alphabet 2x v2_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 74
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45503ee39eb8bbbb0800000000000000
+      internalID: -4919184334073428652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 74
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dfb1ce66bf85ca90800000000000000
+      internalID: -7294266007751639088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 74
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec8a55f038b443e00800000000000000
+      internalID: 1023526041590016206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_3
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 74
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d7c392d3645ff70800000000000000
+      internalID: 9220353040609738079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_4
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 74
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 381f69a1c9ca472d0800000000000000
+      internalID: -3281808441985273469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_5
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 74
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5de39f46711dcf540800000000000000
+      internalID: 5043135581156622037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_6
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 74
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c39c1beb58b5ff10800000000000000
+      internalID: 2302949489395930055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_7
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 74
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f6e54cf580224f90800000000000000
+      internalID: -6970973513380927751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_8
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 74
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da7deaa2a47e2a200800000000000000
+      internalID: 189968440032679853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_9
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 74
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75210a8bfb5ab1e0800000000000000
+      internalID: -2181329933597334147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_10
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 74
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a6ed3a69ce4d0530800000000000000
+      internalID: 3822798285685253797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_11
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 74
+        width: 43
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579e8f9b4968c71b0800000000000000
+      internalID: -5657499058550806155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_12
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 74
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c5c4eba06e9b140800000000000000
+      internalID: 4736069416973524077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_13
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 74
+        width: 30
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d23cd03b70fb9b70800000000000000
+      internalID: 8906977099946668755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_14
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 74
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6056a45b565e98cd0800000000000000
+      internalID: -2555259088560036602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_15
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 14
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d563cd40860367e00800000000000000
+      internalID: 1042073587099121245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_16
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85784abd9cb2e9a0800000000000000
+      internalID: -6205189950941923954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_17
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 14
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e44b184b830a210800000000000000
+      internalID: 1342135036877753947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_18
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d9f5d6b333c89f10800000000000000
+      internalID: 2276784238514010579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 14
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 652a35ba9be8bc940800000000000000
+      internalID: 5317500713135481430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_20
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58e313ae60b4b2c0800000000000000
+      internalID: -4416711345314731939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_21
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 14
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e09856c62a239c0800000000000000
+      internalID: -3948915336806855130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_22
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9513fe6934e23b5a0800000000000000
+      internalID: -6506806168790290087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_23
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61abe09992dd60630800000000000000
+      internalID: 3893042098639649302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_24
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 14
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c463d65f2bfa01e0800000000000000
+      internalID: -2230694484669930296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_25
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cebb4b7b104d7e80800000000000000
+      internalID: -8179310861458096446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_26
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 14
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521b376a799075ec0800000000000000
+      internalID: -3578380831985258203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_27
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 14
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b52e5a517fafbde0800000000000000
+      internalID: -1315139664786610762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_28
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 44
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4bc86afab2c88480800000000000000
+      internalID: -8896646955549537457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_29
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 14
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 875eb4f39e74cc2e0800000000000000
+      internalID: -2104227858773973640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alphabet 2x v2_30
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 14
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b2c1b845f799430800000000000000
+      internalID: 3790200562496842565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Alphabet 2x v2_0: -4919184334073428652
+      Alphabet 2x v2_1: -7294266007751639088
+      Alphabet 2x v2_10: 3822798285685253797
+      Alphabet 2x v2_11: -5657499058550806155
+      Alphabet 2x v2_12: 4736069416973524077
+      Alphabet 2x v2_13: 8906977099946668755
+      Alphabet 2x v2_14: -2555259088560036602
+      Alphabet 2x v2_15: 1042073587099121245
+      Alphabet 2x v2_16: -6205189950941923954
+      Alphabet 2x v2_17: 1342135036877753947
+      Alphabet 2x v2_18: 2276784238514010579
+      Alphabet 2x v2_19: 5317500713135481430
+      Alphabet 2x v2_2: 1023526041590016206
+      Alphabet 2x v2_20: -4416711345314731939
+      Alphabet 2x v2_21: -3948915336806855130
+      Alphabet 2x v2_22: -6506806168790290087
+      Alphabet 2x v2_23: 3893042098639649302
+      Alphabet 2x v2_24: -2230694484669930296
+      Alphabet 2x v2_25: -8179310861458096446
+      Alphabet 2x v2_26: -3578380831985258203
+      Alphabet 2x v2_27: -1315139664786610762
+      Alphabet 2x v2_28: -8896646955549537457
+      Alphabet 2x v2_29: -2104227858773973640
+      Alphabet 2x v2_3: 9220353040609738079
+      Alphabet 2x v2_30: 3790200562496842565
+      Alphabet 2x v2_4: -3281808441985273469
+      Alphabet 2x v2_5: 5043135581156622037
+      Alphabet 2x v2_6: 2302949489395930055
+      Alphabet 2x v2_7: -6970973513380927751
+      Alphabet 2x v2_8: 189968440032679853
+      Alphabet 2x v2_9: -2181329933597334147
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6852185267100408212}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.471, y: -0.121, z: 0}
+  m_LocalPosition: {x: 0.487, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,14 +58,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8601913303527925504}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: -0.014468199, w: -0.99989533}
-  m_LocalPosition: {x: 9.6981, y: 4.3253, z: 0}
-  m_LocalScale: {x: 0.66731876, y: 0.6254589, z: 0.5420852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.6782, y: 4.3628, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.39164168}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2332094349508828961}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -358.342}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8660959420559164821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 711108a6dce3a8942aba18d7c90ffde8, type: 2}
+  m_Sprite: {fileID: -300408897, guid: 1b2bdf6448d06604f97f84a384618a04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,3 +161,6 @@ MonoBehaviour:
   weaponInfo: {fileID: 11400000, guid: 71448e9f385004749988a4e9a0fdc893, type: 2}
   arrowPrefab: {fileID: 2510084789941426431, guid: db5a1d461fd34d74684972aa6c2eb26f, type: 3}
   arrowSpawnPoint: {fileID: 2332094349508828961}
+  defaultDistance: 0.3
+  leftSideExtraDistance: 0.4
+  rotationOffset: 0

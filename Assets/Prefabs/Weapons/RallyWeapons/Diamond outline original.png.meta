@@ -905,7 +905,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Diamond outline original_30
+      name: Staff
       rect:
         serializedVersion: 2
         x: 64
@@ -913,7 +913,7 @@ TextureImporter:
         width: 9
         height: 18
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.5, y: 0.11973529}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1221,7 +1221,7 @@ TextureImporter:
         width: 12
         height: 26
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.4591732, y: 0.22815396}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1274,7 +1274,6 @@ TextureImporter:
       Diamond outline original_28: -8443822993339543050
       Diamond outline original_29: -5543670763726065630
       Diamond outline original_3: 1734375298349734127
-      Diamond outline original_30: 1777092002064409146
       Diamond outline original_31: -8737314887501792247
       Diamond outline original_32: -5670653712776791703
       Diamond outline original_33: 500669132216735188
@@ -1295,6 +1294,7 @@ TextureImporter:
       Diamond outline original_7: -5789354229252037067
       Diamond outline original_8: 633260768681495129
       Diamond outline original_9: -6365885458546934724
+      Staff: 1777092002064409146
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

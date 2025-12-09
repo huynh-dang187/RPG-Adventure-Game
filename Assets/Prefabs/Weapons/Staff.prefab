@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6312948156723098925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.88, y: 1.61, z: 0}
+  m_LocalPosition: {x: -0.055, y: 1.067, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,13 +56,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7454866092214400661}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 1.47, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7089077, w: 0.7053013}
+  m_LocalPosition: {x: -0.009, y: 1.095, z: 0}
   m_LocalScale: {x: 1.8379956, y: 1.9428982, z: 2.539958}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5674045379209816908}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.292}
 --- !u!212 &203939410677872769
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -149,8 +149,8 @@ Transform:
   m_GameObject: {fileID: 7706247648251144920}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -0.14, z: 0}
-  m_LocalScale: {x: 0.54407096, y: 0.5146949, z: 0.39370725}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.22385524}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7298694704167083499}
@@ -172,6 +172,7 @@ MonoBehaviour:
   weaponInfo: {fileID: 11400000, guid: 2cc30dd99e0586d4a9fd6ec66475ecd3, type: 2}
   magicLaser: {fileID: 9131040794171645674, guid: 1e37ea35fc5faaf4eaf52cbb339ebfae, type: 3}
   magicLaserSpawnPoint: {fileID: 5906189973882421963}
+  distanceFromPlayer: 0.4
 --- !u!212 &-7676631784524567856
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -219,7 +220,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5821233238146367787, guid: 769e3eedcebb7114894445bf8aa2d9e5, type: 3}
+  m_Sprite: {fileID: 1777092002064409146, guid: 1b2bdf6448d06604f97f84a384618a04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0

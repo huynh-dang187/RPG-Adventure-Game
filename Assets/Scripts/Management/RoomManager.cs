@@ -5,6 +5,9 @@ using Cinemachine;
 
 public class RoomManager : MonoBehaviour
 {
+    // [MỚI] Thêm biến này để quản lý Camera an toàn hơn
+    public CameraController camControl; 
+
     [Header("1. Cài đặt Cổng ra")]
     [SerializeField] private GameObject exitDoor;
 
@@ -12,7 +15,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private Transform zoomTarget;
 
     [Header("3. Camera (Kéo 'Virtual Camera' vào đây)")]
-    [SerializeField] private CinemachineVirtualCamera targetCamera; // Kéo cái Virtual Camera vào đây
+    [SerializeField] private CinemachineVirtualCamera targetCamera; 
 
     [Header("4. Quản lý Quái vật")]
     [SerializeField] private Transform enemyGroup;
@@ -29,6 +32,9 @@ public class RoomManager : MonoBehaviour
     {
         if (exitDoor != null) exitDoor.SetActive(false);
 
+        // Tự tìm CameraController nếu chưa kéo
+        if (camControl == null) camControl = Object.FindFirstObjectByType<CameraController>();
+
         if (enemyGroup != null)
         {
             foreach (Transform child in enemyGroup)
@@ -40,17 +46,15 @@ public class RoomManager : MonoBehaviour
     {
         if (!isDoorOpened) CheckEnemies();
         
-        // Cheat K: Diệt quái
         if (Input.GetKeyDown(KeyCode.K))
         {
             foreach (var enemy in enemies) if (enemy != null) Destroy(enemy);
-            enemies.Clear(); // Xóa list ngay để kích hoạt luôn
+            enemies.Clear(); 
         }
     }
 
     private void CheckEnemies()
     {
-        // Dọn dẹp list
         for (int i = enemies.Count - 1; i >= 0; i--)
             if (enemies[i] == null) enemies.RemoveAt(i);
 
@@ -65,41 +69,29 @@ public class RoomManager : MonoBehaviour
     {
         if (exitDoor != null) exitDoor.SetActive(true);
 
-        if (CameraController.Instance != null && zoomTarget != null)
+        if (camControl != null && zoomTarget != null)
         {
-            // --- [PHẦN SỬA ĐỔI QUAN TRỌNG] ---
-            // Dùng Behaviour để tắt được cả Confiner cũ lẫn Confiner 2D mới
             Behaviour confiner = null;
 
             if (targetCamera != null) {
-                // Thử tìm Confiner bản cũ
                 confiner = targetCamera.GetComponent<CinemachineConfiner>();
-                
-                // Nếu không thấy, thử tìm Confiner 2D (bản Unity 6)
                 if (confiner == null) {
-                    // Tìm theo tên để tránh lỗi biên dịch nếu thiếu thư viện
                     confiner = targetCamera.GetComponent("CinemachineConfiner2D") as Behaviour;
                 }
             }
 
-            // Tắt Confiner (Mở khóa nhà tù)
-            if (confiner != null) {
-                confiner.enabled = false;
-                Debug.Log("🔓 Đã tắt Confiner thành công!");
-            }
-            // ----------------------------------
+            if (confiner != null) confiner.enabled = false;
 
-            CameraController.Instance.SetCameraTarget(zoomTarget);
-            CameraController.Instance.ZoomTo(zoomSize, zoomSpeed);
+            camControl.SetCameraTarget(zoomTarget);
+            camControl.ZoomTo(zoomSize, zoomSpeed);
 
             yield return new WaitForSeconds(waitTime);
 
-            CameraController.Instance.SetPlayerCameraFollow();
-            CameraController.Instance.ResetZoom(zoomSpeed);
+            camControl.SetPlayerCameraFollow();
+            camControl.ResetZoom(zoomSpeed);
 
             yield return new WaitForSeconds(zoomSpeed);
             
-            // Bật lại Confiner (Nhốt lại)
             if (confiner != null) confiner.enabled = true;
         }
     }

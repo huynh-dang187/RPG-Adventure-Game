@@ -2,47 +2,40 @@ using System.Collections;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraController : Singleton<CameraController>
+public class CameraController : MonoBehaviour 
 {
+    private float defaultSize = 8f; 
     private CinemachineVirtualCamera cinemachineVirtualCamera;
-    
-    [Header("Cài đặt Mặc định")]
-    [SerializeField] private float defaultSize = 8f; 
-
     private Coroutine zoomCoroutine;
 
-    // --- SỬA LỖI Ở ĐÂY: XÓA HÀM AWAKE, CHUYỂN HẾT VÀO START ---
-    // Để cho Singleton của bạn có thời gian khởi tạo Instance trước
     private void Start()
     {
-        // 1. Tìm Camera
+        // Tự tìm tạm một cái camera để tránh lỗi null lúc đầu
         cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        
-        if (cinemachineVirtualCamera != null)
-        {
-            // Reset size về chuẩn ngay khi bắt đầu
-            cinemachineVirtualCamera.m_Lens.OrthographicSize = defaultSize;
+        if (cinemachineVirtualCamera != null) {
+            defaultSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
         }
+    }
 
-        // 2. Bắt đầu follow nhân vật
-        SetPlayerCameraFollow();
+    // [MỚI] Hàm này để BossLevelManager chỉ định chính xác camera nào cần zoom
+    public void SetActiveCamera(CinemachineVirtualCamera newCam) {
+        if (newCam != null) {
+            cinemachineVirtualCamera = newCam;
+            // Cập nhật lại size mặc định theo camera mới này
+            defaultSize = newCam.m_Lens.OrthographicSize;
+        }
     }
 
     public void SetPlayerCameraFollow()
     {
-        if(cinemachineVirtualCamera == null) 
-            cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-
-        if (PlayerController.Instance != null && cinemachineVirtualCamera != null)
-        {
+        if (PlayerController.Instance != null && cinemachineVirtualCamera != null) {
             cinemachineVirtualCamera.Follow = PlayerController.Instance.transform;
         }
     }
 
     public void SetCameraTarget(Transform targetTransform)
     {
-        if (cinemachineVirtualCamera != null)
-        {
+        if (cinemachineVirtualCamera != null) {
             cinemachineVirtualCamera.Follow = targetTransform;
         }
     }

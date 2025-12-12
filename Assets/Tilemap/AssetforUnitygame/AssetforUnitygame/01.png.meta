@@ -3553,13 +3553,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_113
+      name: gate3
       rect:
         serializedVersion: 2
         x: 6
-        y: 392
+        y: 453
         width: 52
-        height: 114
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3575,7 +3575,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_114
+      name: gate3.1
       rect:
         serializedVersion: 2
         x: 70
@@ -3597,7 +3597,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_115
+      name: gate3.2
       rect:
         serializedVersion: 2
         x: 136
@@ -3619,7 +3619,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_116
+      name: gate3.3
       rect:
         serializedVersion: 2
         x: 201
@@ -3641,7 +3641,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_117
+      name: gate3.4
       rect:
         serializedVersion: 2
         x: 264
@@ -3663,7 +3663,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_118
+      name: gateend
       rect:
         serializedVersion: 2
         x: 325
@@ -8115,12 +8115,6 @@ TextureImporter:
       01_110: 3659375916822615955
       01_111: 6556531826757175426
       01_112: -4133587524084744481
-      01_113: 4090526702345778475
-      01_114: -2504289294625473123
-      01_115: 1339059631721433477
-      01_116: 3438202723140827753
-      01_117: -5490961740371681924
-      01_118: 1931330692337229564
       01_119: -2048804813869450703
       01_12: 4930078325819049647
       01_120: 3648699474151551829
@@ -8417,6 +8411,12 @@ TextureImporter:
       e: -7075746071952024992
       f: -9016351017719687711
       g: -3645227853458373838
+      gate3: 4090526702345778475
+      gate3.1: -2504289294625473123
+      gate3.2: 1339059631721433477
+      gate3.3: 3438202723140827753
+      gate3.4: -5490961740371681924
+      gateend: 1931330692337229564
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

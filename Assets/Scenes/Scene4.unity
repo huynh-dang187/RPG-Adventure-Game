@@ -12702,7 +12702,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1616431778}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 6.430575
+    OrthographicSize: 5.286228
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -21004,8 +21004,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3196898111327511032, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9086645153891802024}
   m_SourcePrefab: {fileID: 100100000, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+--- !u!1 &9086645153891802023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3196898111327511032, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+  m_PrefabInstance: {fileID: 9086645153891802022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9086645153891802024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086645153891802023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f622a09ed02d9e54abcc4535cd7d10c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HideWeapon
+  targetSceneName: Scene5
+  weaponName: Active Weapon
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

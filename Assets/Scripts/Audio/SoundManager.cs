@@ -1,29 +1,42 @@
 using UnityEngine;
 
-// Source  https://www.youtube.com/watch?v=jEoobucfoL4
+// Source https://www.youtube.com/watch?v=jEoobucfoL4
 public class SoundManager : MonoBehaviour
 {
-	public static SoundManager Instance;
+    public static SoundManager Instance;
 
-	[Header("Library & Sources")]
-	[SerializeField] 
-	private SoundLibrary sfxLibrary;
-	[SerializeField] 
-	private AudioSource sfx2DSource;
+    [Header("Library & Sources")]
+    [SerializeField] 
+    private SoundLibrary sfxLibrary;
+    [SerializeField] 
+    private AudioSource sfx2DSource;
 
+    // --- THÊM MỚI: Nguồn phát nhạc nền ---
+    [Header("Music")]
+    public AudioSource musicSource; 
+    // -------------------------------------
 
+    private void Awake(){
+        if (Instance!= null){
+            Destroy(gameObject);
+        }
+        else{
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
-	private void Awake(){
-		if (Instance!= null){
-			Destroy(gameObject);
-		}
-		else{
-			Instance = this;
-			DontDestroyOnLoad(gameObject);
+    // --- THÊM MỚI: Hàm tắt nhạc để EndGame gọi ---
+    public void StopMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+        }
+    }
+    // ----------------------------------------------
 
-		}
-	}
-	public void PlaySound3D(AudioClip clip, float volume, Vector3 pos)
+    public void PlaySound3D(AudioClip clip, float volume, Vector3 pos)
     {
         if (clip != null)
         {
@@ -46,5 +59,4 @@ public class SoundManager : MonoBehaviour
             sfx2DSource.PlayOneShot(clip, volume);
         }
     }
-
 }

@@ -8,31 +8,30 @@ public class CameraController : MonoBehaviour
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     private Coroutine zoomCoroutine;
 
-    private void Start()
-    {
-        // Tự tìm tạm một cái camera để tránh lỗi null lúc đầu
-        cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        if (cinemachineVirtualCamera != null) {
-            defaultSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
-        }
-    }
-
-    // [MỚI] Hàm này để BossLevelManager chỉ định chính xác camera nào cần zoom
+    // Hàm này để RoomManager/BossManager gọi, ép dùng camera cụ thể
     public void SetActiveCamera(CinemachineVirtualCamera newCam) {
         if (newCam != null) {
             cinemachineVirtualCamera = newCam;
-            // Cập nhật lại size mặc định theo camera mới này
             defaultSize = newCam.m_Lens.OrthographicSize;
+            
+            // --- [THÊM MỚI QUAN TRỌNG] ---
+            // Ngay khi nhận camera mới, bắt nó bám theo Player liền!
+            if (PlayerController.Instance != null) {
+                cinemachineVirtualCamera.Follow = PlayerController.Instance.transform;
+            }
+            // -----------------------------
         }
     }
 
     public void SetPlayerCameraFollow()
     {
-        if (PlayerController.Instance != null && cinemachineVirtualCamera != null) {
+        // Nếu đang nắm camera nào đó, bắt nó bám theo Player
+        if (cinemachineVirtualCamera != null && PlayerController.Instance != null) {
             cinemachineVirtualCamera.Follow = PlayerController.Instance.transform;
         }
     }
 
+    // (Giữ nguyên các hàm ZoomTo, ResetZoom, SetCameraTarget bên dưới...)
     public void SetCameraTarget(Transform targetTransform)
     {
         if (cinemachineVirtualCamera != null) {

@@ -23587,7 +23587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193dc5418d1674a4ba4a47d7d7c9c089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  defaultSize: 8
 --- !u!4 &1835320932
 Transform:
   m_ObjectHideFlags: 0
@@ -24242,6 +24241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49f7aabe6827f64784e085cefbaec7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
+  camControl: {fileID: 1835320931}
   exitDoor: {fileID: 627201068}
   zoomTarget: {fileID: 2015532148}
   targetCamera: {fileID: 2078989287}
@@ -24315,7 +24315,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
   m_PrefabInstance: {fileID: 4679913582852058735}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4679913582852058736}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
@@ -24748,7 +24748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1466901463777450881, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalScale.x
@@ -24756,11 +24756,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.0397034
+      value: 5.8106604
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.98105997
+      value: 0.8845
       objectReference: {fileID: 0}
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Follow
@@ -24768,7 +24768,7 @@ PrefabInstance:
       objectReference: {fileID: 1616431778}
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24812,7 +24812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.7300005
+      value: 14.8
       objectReference: {fileID: 0}
     - target: {fileID: 6240160664435042329, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24865,8 +24865,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5596534009635506614, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4679913582852058737}
   m_SourcePrefab: {fileID: 100100000, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
+--- !u!1 &4679913582852058736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5596534009635506614, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
+  m_PrefabInstance: {fileID: 4679913582852058735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4679913582852058737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679913582852058736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03598cf0cf9864bb8bf3f85daabb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFindPlayer
 --- !u!1001 &5041768389042570156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29947,7 +29967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.43
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 6557837241731943700, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_LocalPosition.y

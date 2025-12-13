@@ -13001,7 +13001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaEntrance
   transitionName: Scene3
-  playerScale: {x: 0.7, y: 0.7, z: 0.7}
+  playerScale: {x: 0.8, y: 0.8, z: 0.8}
 --- !u!4 &731819196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1790563547993512414, guid: f7f5a8625f8203849bc6f70f9d1e305a, type: 3}
@@ -14854,7 +14854,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1466901463777450881, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalScale.x
@@ -14866,11 +14866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.16865253
+      value: -5.135359
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7154846
+      value: -1.1277161
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14895,14 +14895,14 @@ PrefabInstance:
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9086645153891802023}
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Priority
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalScale.x
@@ -15431,6 +15431,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5596534009635506614, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1138925615}
+    - targetCorrespondingSourceObject: {fileID: 5596534009635506614, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1138925618}
   m_SourcePrefab: {fileID: 100100000, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
 --- !u!60 &1138925613 stripped
 PolygonCollider2D:
@@ -15487,6 +15490,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineVirtualCamera
+--- !u!114 &1138925618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138925614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03598cf0cf9864bb8bf3f85daabb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFindPlayer
 --- !u!1 &1139041519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6644944589867386885, guid: 4be821d0b78ad5043985b57b738e951b, type: 3}
@@ -19709,7 +19724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193dc5418d1674a4ba4a47d7d7c9c089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  defaultSize: 8
 --- !u!4 &1643664995
 Transform:
   m_ObjectHideFlags: 0
@@ -24057,6 +24071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49f7aabe6827f64784e085cefbaec7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomManager
+  camControl: {fileID: 1643664994}
   exitDoor: {fileID: 1260106326}
   zoomTarget: {fileID: 1816446306}
   targetCamera: {fileID: 1138925617}

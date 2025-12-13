@@ -19,7 +19,7 @@ public class BossLevelManager : MonoBehaviour
     [SerializeField] private Transform zoomTarget; 
 
     [Header("4. Thông số Zoom")]
-    [SerializeField] private float zoomSize = 2f; // Zoom sát vào (số nhỏ)
+    [SerializeField] private float zoomSize = 2f; 
     [SerializeField] private float zoomSpeed = 1.5f;
     [SerializeField] private float waitTime = 3f;
 
@@ -28,7 +28,17 @@ public class BossLevelManager : MonoBehaviour
     private void Start()
     {
         if (exitDoor != null) exitDoor.SetActive(false);
-        if (camControl == null) camControl = FindObjectOfType<CameraController>();
+
+        // Tự tìm CameraController nếu chưa kéo
+        if (camControl == null) camControl = Object.FindFirstObjectByType<CameraController>();
+
+        // --- [THÊM MỚI QUAN TRỌNG] ---
+        // Ngay khi vào màn Boss, ép CameraController nhận diện VCam_Room2
+        // VÀ ép VCam_Room2 bám theo Player ngay lập tức
+        if (camControl != null && virtualCam != null) {
+            camControl.SetActiveCamera(virtualCam);
+        }
+        // -----------------------------
     }
 
     private void Update()
@@ -51,30 +61,24 @@ public class BossLevelManager : MonoBehaviour
 
         if (camControl != null && zoomTarget != null && virtualCam != null)
         {
-            // --- [QUAN TRỌNG] ---
-            // Bắt CameraController phải dùng VCam_Room2
+            // Đảm bảo lại lần nữa trước khi zoom
             camControl.SetActiveCamera(virtualCam);
-            // --------------------
 
-            // 1. Tắt Confiner (để không kẹt tường)
             Behaviour confiner = virtualCam.GetComponent<CinemachineConfiner>();
             if (confiner == null) confiner = virtualCam.GetComponent("CinemachineConfiner2D") as Behaviour;
             
             if (confiner != null) confiner.enabled = false;
 
-            // 2. Zoom vào
             camControl.SetCameraTarget(zoomTarget);
             camControl.ZoomTo(zoomSize, zoomSpeed);
 
             yield return new WaitForSeconds(waitTime);
 
-            // 3. Trả về
             camControl.SetPlayerCameraFollow();
             camControl.ResetZoom(zoomSpeed);
 
             yield return new WaitForSeconds(zoomSpeed);
             
-            // 4. Bật lại giới hạn
             if (confiner != null) confiner.enabled = true;
         }
     }

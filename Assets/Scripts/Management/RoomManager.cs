@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class RoomManager : MonoBehaviour
 {
-    // [MỚI] Thêm biến này để quản lý Camera an toàn hơn
     public CameraController camControl; 
 
     [Header("1. Cài đặt Cổng ra")]
@@ -31,8 +30,6 @@ public class RoomManager : MonoBehaviour
     private void Start()
     {
         if (exitDoor != null) exitDoor.SetActive(false);
-
-        // Tự tìm CameraController nếu chưa kéo
         if (camControl == null) camControl = Object.FindFirstObjectByType<CameraController>();
 
         if (enemyGroup != null)
@@ -69,17 +66,18 @@ public class RoomManager : MonoBehaviour
     {
         if (exitDoor != null) exitDoor.SetActive(true);
 
-        if (camControl != null && zoomTarget != null)
+        // Kiểm tra an toàn
+        if (camControl != null && zoomTarget != null && targetCamera != null)
         {
-            Behaviour confiner = null;
+            // --- [ĐOẠN QUAN TRỌNG NHẤT] ---
+            // Ép CameraController phải dùng cái Camera mình vừa kéo vào
+            // Bất kể nó đang nhớ cái gì ở Scene cũ, giờ phải dùng cái này!
+            camControl.SetActiveCamera(targetCamera);
+            // -------------------------------
 
-            if (targetCamera != null) {
-                confiner = targetCamera.GetComponent<CinemachineConfiner>();
-                if (confiner == null) {
-                    confiner = targetCamera.GetComponent("CinemachineConfiner2D") as Behaviour;
-                }
-            }
-
+            Behaviour confiner = targetCamera.GetComponent<CinemachineConfiner>();
+            if (confiner == null) confiner = targetCamera.GetComponent("CinemachineConfiner2D") as Behaviour;
+            
             if (confiner != null) confiner.enabled = false;
 
             camControl.SetCameraTarget(zoomTarget);

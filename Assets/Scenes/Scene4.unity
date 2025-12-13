@@ -9835,6 +9835,7 @@ GameObject:
   - component: {fileID: 627959814}
   - component: {fileID: 627959816}
   - component: {fileID: 627959815}
+  - component: {fileID: 627959817}
   m_Layer: 0
   m_Name: VCam_Room1
   m_TagString: Untagged
@@ -9914,6 +9915,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1576368825}
+--- !u!114 &627959817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627959813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03598cf0cf9864bb8bf3f85daabb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFindPlayer
 --- !u!1 &632007034
 GameObject:
   m_ObjectHideFlags: 3
@@ -12626,6 +12639,7 @@ GameObject:
   - component: {fileID: 1153594389}
   - component: {fileID: 1153594391}
   - component: {fileID: 1153594390}
+  - component: {fileID: 1153594392}
   m_Layer: 0
   m_Name: VCam_Room2
   m_TagString: Untagged
@@ -12688,7 +12702,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1616431778}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 7
+    OrthographicSize: 6.430575
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -12705,6 +12719,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 632007035}
+--- !u!114 &1153594392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153594388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf03598cf0cf9864bb8bf3f85daabb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFindPlayer
 --- !u!1 &1159244147 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1360264394729772843, guid: 4fad9c4de6b725a43bb1200ed9479c08, type: 3}
@@ -13552,7 +13578,7 @@ Transform:
   m_GameObject: {fileID: 1324733418}
   serializedVersion: 2
   m_LocalRotation: {x: 0.029472198, y: 0.50382257, z: 0.0006011533, w: 0.8633041}
-  m_LocalPosition: {x: 0.03, y: 1.76, z: -8.65}
+  m_LocalPosition: {x: 0.08, y: 1.32, z: -8.79}
   m_LocalScale: {x: 0.9716698, y: 0.70445997, z: 1.7902}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19193,7 +19219,7 @@ Transform:
   m_GameObject: {fileID: 1983181980}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.71, y: 19.14, z: 0}
+  m_LocalPosition: {x: 6.88, y: 19.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20767,16 +20793,16 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2032560690}
+      addedObject: {fileID: 627959814}
     - targetCorrespondingSourceObject: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 627959814}
+      addedObject: {fileID: 1153594389}
     - targetCorrespondingSourceObject: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 720490710}
     - targetCorrespondingSourceObject: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1153594389}
+      addedObject: {fileID: 2032560690}
     - targetCorrespondingSourceObject: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 732090211}

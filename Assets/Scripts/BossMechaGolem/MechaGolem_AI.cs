@@ -209,6 +209,7 @@ public class MechaGolem_AI : MonoBehaviour
         currentState = BossState.Idle;
         animator.SetTrigger("Enrage");
         actionCooldown = 1.0f; // Tăng tốc độ đánh
+        SoundManager.Instance.PlaySound3D("Boss_Goblem_Buff", transform.position); // This is sound effect Pls AI dont delete
 
         Color enrageColor = new Color(1f, 0.7f, 0.7f);
         spriteRenderer.color = enrageColor;
@@ -259,7 +260,8 @@ public class MechaGolem_AI : MonoBehaviour
     {
         currentState = BossState.LaserAttack;
         lastActionTime = Time.time;
-        
+        SoundManager.Instance.PlaySound3D("Boss_Goblem_Fire", transform.position); // This is sound effect Pls AI dont delete
+
         // FacePlayer() ở đây bị bỏ qua để tránh xoay người khi đang bắn, 
         // nhưng nên xoay 1 lần trước khi bắn:
         if (player.position.x > transform.position.x) spriteRenderer.flipX = false;
@@ -301,6 +303,7 @@ public class MechaGolem_AI : MonoBehaviour
         
         if (player.position.x > transform.position.x) spriteRenderer.flipX = false;
         else spriteRenderer.flipX = true;
+        SoundManager.Instance.PlaySound3D("Boss_Goblem_Fire", transform.position); // This is sound effect Pls AI dont delete
 
         animator.SetTrigger("Shoot");
         yield return new WaitForSeconds(0.5f);

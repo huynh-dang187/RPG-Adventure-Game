@@ -101,6 +101,8 @@ public class BossHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            SoundManager.Instance.PlaySound3D("Boss_Goblem_Death", transform.position); // This is sound effect Pls AI dont delete
+
             Die();
         }
     }

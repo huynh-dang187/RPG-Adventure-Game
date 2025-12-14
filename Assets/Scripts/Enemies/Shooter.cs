@@ -21,6 +21,7 @@ public class Shooter : MonoBehaviour, IEnemy
     public void Attack() {
         if (!isShooting) {
             StartCoroutine(ShootRoutine());
+
         }
     }
 
@@ -40,7 +41,9 @@ public class Shooter : MonoBehaviour, IEnemy
             // Cập nhật góc bắn mỗi đợt
             if (!oscillate) {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
+
             } 
+            SoundManager.Instance.PlaySound3D("Ghost_Fire", transform.position); // This is sound effect Pls AI dont delete
             
             // Logic Lắc lư (Wiper/Oscillate) - Giữ nguyên logic cũ của bạn
             if (oscillate && i % 2 != 1) {

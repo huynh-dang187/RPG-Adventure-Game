@@ -149,6 +149,31 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 0dda8c72d8322ef45b67c3df3a45ab38, type: 3}
     volume: 0.51
     lastIndex: 0
+  - groupID: Ghost_Fire
+    clips:
+    - {fileID: 8300000, guid: 9782fa30ae1cb73478b7948fdbdedb42, type: 3}
+    volume: 0.51
+    lastIndex: 0
+  - groupID: Skeleton_Moving
+    clips:
+    - {fileID: 8300000, guid: 6246fd6ce2b7f1b43b9dac67041bf07e, type: 3}
+    volume: 0.51
+    lastIndex: 0
+  - groupID: Boss_Goblem_Fire
+    clips:
+    - {fileID: 8300000, guid: 2def2c7ed37c242439abba5f7842cd11, type: 3}
+    volume: 0.51
+    lastIndex: 0
+  - groupID: Boss_Goblem_Buff
+    clips:
+    - {fileID: 8300000, guid: 7fedb0953ca086242b47fe90801b287e, type: 3}
+    volume: 0.51
+    lastIndex: 0
+  - groupID: Boss_Goblem_Death
+    clips:
+    - {fileID: 8300000, guid: 77e9abbcfae477b4cad79cb0a0e54d9f, type: 3}
+    volume: 0.51
+    lastIndex: 0
 --- !u!114 &5576816968115484013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   sfxLibrary: {fileID: 982485622220746836}
   sfx2DSource: {fileID: 4919192849017105929}
+  musicSource: {fileID: 0}
 --- !u!82 &2824740905807928705
 AudioSource:
   m_ObjectHideFlags: 0

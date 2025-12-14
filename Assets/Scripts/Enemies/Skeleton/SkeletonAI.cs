@@ -76,6 +76,8 @@ public class SkeletonAI : MonoBehaviour
             
             // Đuổi theo Player
             ChasePlayer(playerTransform);
+            SoundManager.Instance.PlaySound3D("Skeleton_Moving", transform.position); // This is sound effect Pls AI dont delete
+
         }
         else // TRẠNG THÁI: ĐI TUẦN (MỚI)
         {
@@ -112,7 +114,6 @@ public class SkeletonAI : MonoBehaviour
             
             // Dùng roamingSpeed (chậm hơn) để đi thong thả
             rb.linearVelocity = direction * roamingSpeed; 
-            
             animator.SetBool("isRunning", true);
             FlipSprite(direction.x);
         }
@@ -137,6 +138,7 @@ public class SkeletonAI : MonoBehaviour
 
     void StopMoving()
     {
+
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isRunning", false);
     }

@@ -1,31 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections; // Cần dòng này để dùng Coroutine
+using System.Collections;
 
 public class BossHealth : MonoBehaviour
 {
+    [Header("Cài đặt Máu")]
     public int maxHealth = 500;
     public int currentHealth;
 
-    [Header("Status")]
-    public bool isInvulnerable = false; // Biến để bật/tắt chế độ Bất tử
+    [Header("Trạng thái")]
+    public bool isInvulnerable = false;
 
-    [Header("UI Settings")]
-    public Slider healthSlider;
-    public GameObject healthBarFrame;
-    public TextMeshProUGUI bossNameText;
-    public GameObject exitPortal;
+    [Header("KÉO THẢ UI VÀO ĐÂY (Canvas riêng của Scene)")]
+    public GameObject healthBarFrame; // Kéo cái khung (Frame)
+    public Slider healthSlider;       // Kéo cái Slider
+    public TextMeshProUGUI bossNameText; // Kéo cái Text tên
 
-    [Header("Flash Effect")]
-    public Color flashColor = Color.red; // Màu nháy khi bị đánh
-    public float flashDuration = 0.1f;   // Thời gian nháy
+    [Header("Cổng thoát (Kéo thả)")]
+    public GameObject exitPortal; 
+
+    [Header("Hiệu ứng")]
+    public Color flashColor = Color.red; 
+    public float flashDuration = 0.1f;   
     private SpriteRenderer spriteRenderer;
-    
-    // Đã đổi tên thành defaultColor và để public
-    public Color defaultColor; 
 
-    // --- KHAI BÁO CÁC LOẠI AI CỦA BOSS ---
+    // --- SỬA LỖI TẠI ĐÂY: Đổi thành PUBLIC để AI Golem dùng được ---
+    public Color defaultColor; 
+    // --------------------------------------------------------------
+
+    // AI References
     private Reaper_AI reaperAI;
     private MechaGolem_AI golemAI; 
     private Animator animator;
@@ -34,64 +38,66 @@ public class BossHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         
-        // Tự động tìm component
         reaperAI = GetComponent<Reaper_AI>();
         golemAI = GetComponent<MechaGolem_AI>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Lưu màu gốc (dùng biến defaultColor)
+        // Lưu màu gốc
         if (spriteRenderer != null) defaultColor = spriteRenderer.color;
 
-        // Setup UI ban đầu
+        // Setup Slider ban đầu
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
         }
-        if (healthBarFrame != null) healthBarFrame.SetActive(false);
+        
+        // MẶC ĐỊNH LÀ TẮT (Ẩn đi chờ bị đánh mới hiện)
+        if (healthBarFrame != null) 
+        {
+            healthBarFrame.SetActive(false);
+        }
     }
 
     public void TakeDamage(int damage, Transform hitTransform)
     {
-        // 1. XỬ LÝ KHIÊN PHẢN ĐÒN (Counter Shield)
+        // 1. Check bất tử
         if (isInvulnerable)
         {
             if (hitTransform != null)
             {
                 PlayerHealth player = hitTransform.GetComponent<PlayerHealth>();
-                if (player != null)
-                {
-                    Debug.Log("PHẢN ĐÒN! Player đánh vào khiên!");
-                    player.TakeDamage(1, transform);
-                }
+                if (player != null) player.TakeDamage(1, transform);
             }
             return; 
         }
 
-        // 2. KIỂM TRA XEM BOSS ĐÃ CHẾT CHƯA
+        // 2. Check chết
         if ((reaperAI != null && reaperAI.currentState == Reaper_AI.BossState.Dead) || 
             (golemAI != null && golemAI.currentState == MechaGolem_AI.BossState.Dead)) return;
 
-        // 3. HIỆN UI
+        // 3. BẬT THANH MÁU (Nếu đang tắt)
         if (healthBarFrame != null && !healthBarFrame.activeSelf)
         {
             healthBarFrame.SetActive(true);
-            if (golemAI != null && bossNameText != null) bossNameText.text = "MECHA GOLEM";
-            if (reaperAI != null && bossNameText != null) bossNameText.text = "THE REAPER";
+            
+            // Set tên Boss
+            if (bossNameText != null)
+            {
+                if (golemAI != null) bossNameText.text = "MECHA GOLEM";
+                else if (reaperAI != null) bossNameText.text = "THE REAPER";
+            }
         }
 
-        // 4. TRỪ MÁU
+        // 4. Trừ máu
         currentHealth -= damage;
         if (healthSlider != null) healthSlider.value = currentHealth;
 
-        // 5. HIỆU ỨNG NHÁY ĐỎ
-        if (spriteRenderer != null)
-        {
-            StartCoroutine(FlashRoutine());
-        }
+        // 5. Hiệu ứng
+        if (spriteRenderer != null) StartCoroutine(FlashRoutine());
 
-        // 6. KIỂM TRA CHẾT
+        // 6. Xử lý chết
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -99,38 +105,24 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    // Coroutine nháy đỏ
     IEnumerator FlashRoutine()
     {
-        spriteRenderer.color = flashColor; // Chuyển sang đỏ
-        yield return new WaitForSeconds(flashDuration); // Chờ xíu
-        
-        // SỬA LỖI Ở ĐÂY: Dùng defaultColor thay vì originalColor
+        spriteRenderer.color = flashColor; 
+        yield return new WaitForSeconds(flashDuration); 
         spriteRenderer.color = defaultColor; 
     }
 
     void Die()
     {
-        Debug.Log("Boss đã chết!");
-        
-        if (healthBarFrame != null) healthBarFrame.SetActive(false);
-        if (healthSlider != null) healthSlider.gameObject.SetActive(false);
-        if (exitPortal != null) exitPortal.SetActive(true);
+        if (healthBarFrame != null) healthBarFrame.SetActive(false); 
+        if (exitPortal != null) exitPortal.SetActive(true); 
         if (animator != null) animator.SetTrigger("Die");
-
+        
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
 
-        if (reaperAI != null)
-        {
-            reaperAI.currentState = Reaper_AI.BossState.Dead;
-            reaperAI.enabled = false;
-        }
-        if (golemAI != null)
-        {
-            golemAI.OnBossDie(); 
-            golemAI.enabled = false;
-        }
+        if (reaperAI != null) { reaperAI.currentState = Reaper_AI.BossState.Dead; reaperAI.enabled = false; }
+        if (golemAI != null) { golemAI.OnBossDie(); golemAI.enabled = false; }
 
         Destroy(gameObject, 2f); 
     }

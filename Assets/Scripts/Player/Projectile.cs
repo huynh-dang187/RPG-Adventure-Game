@@ -5,7 +5,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float moveSpeed = 22f;
     [SerializeField] private GameObject particleOnHitPrefabVFX;
     [SerializeField] private bool isEnemyProjectile = false;
-    [SerializeField] private float projectileRange = 10f; // Biến tầm bắn mặc định
+    [SerializeField] private float projectileRange = 10f;
+
+    // --- THÊM DÒNG NÀY ĐỂ CHỈNH DAME ---
+    [Header("Chỉnh Sát Thương")]
+    [SerializeField] private int damageAmount = 10; // Mặc định là 10, chỉnh trong Unity
+    // -----------------------------------
 
     private Vector3 startPos;
 
@@ -20,13 +25,11 @@ public class Projectile : MonoBehaviour
         DetectFireDistance();
     }
 
-    // --- HÀM 1: Dùng cho Enemy (Shooter) ---
     public void UpdateMoveSpeed(float moveSpeed)
     {
         this.moveSpeed = moveSpeed;
     }
 
-    // --- HÀM 2: Dùng cho Cung (Bow) - BẠN ĐANG THIẾU CÁI NÀY ---
     public void UpdateProjectileRange(float range)
     {
         this.projectileRange = range;
@@ -47,26 +50,40 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Logic xử lý va chạm (Giữ nguyên như cũ)
-        // Nếu là đạn của Player
+        // 1. NẾU LÀ ĐẠN CỦA PLAYER (Bắn trúng quái)
         if (!isEnemyProjectile) 
         {
-             // Trúng Enemy
+             // Tìm EnemyHealth (Quái thường)
              EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-             if(enemyHealth) { enemyHealth.TakeDamage(1); Destroy(gameObject); }
+             if(enemyHealth) { 
+                 // Sửa số 1 thành damageAmount
+                 enemyHealth.TakeDamage(damageAmount); 
+                 Destroy(gameObject); 
+                 return; // Dừng luôn
+             }
+
+             // Tìm BossHealth (Nếu bắn trúng Boss) - Thêm cái này cho chắc
+             BossHealth bossHealth = other.GetComponent<BossHealth>();
+             if(bossHealth) {
+                 bossHealth.TakeDamage(damageAmount, transform);
+                 Destroy(gameObject);
+                 return;
+             }
         }
-        else // Nếu là đạn của Enemy
+        // 2. NẾU LÀ ĐẠN CỦA ENEMY (Bắn trúng Player)
+        else 
         {
-             // Trúng Player
              if (other.CompareTag("Player"))
              {
                  PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-                 if (playerHealth) playerHealth.TakeDamage(1, transform);
+                 // --- SỬA Ở ĐÂY: Thay số 1 thành damageAmount ---
+                 if (playerHealth) playerHealth.TakeDamage(damageAmount, transform);
+                 
                  Destroy(gameObject);
              }
         }
 
-        // Trúng tường thì nổ
+        // Xử lý va chạm tường
         if (!other.isTrigger && (other.CompareTag("Wall") || other.gameObject.layer == LayerMask.NameToLayer("Default")))
         {
             Destroy(gameObject);

@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6a3b81f5c509749af02fd363996fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreditsRoller
-  scrollSpeed: 70
+  scrollSpeed: 65
   mainMenuSceneName: MenuStart
   textRect: {fileID: 1844443860}
   limitY: 700
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.972549}
+  m_Color: {r: 0.028301895, g: 0.027367398, b: 0.027367398, a: 0.9764706}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -621,7 +621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -945.9}
+  m_AnchoredPosition: {x: 0, y: -924}
   m_SizeDelta: {x: 1000, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844443861

@@ -9,7 +9,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private MonoBehaviour enemyType;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private bool stopMovingWhileAttacking = false;
-
+    [Header("Cài đặt Va Chạm")]
+    public int touchDamage = 1;
     private bool canAttack = true;
     private enum State { Roaming, Attacking }
     private Vector2 roamPosition;

@@ -37,12 +37,14 @@ public class PlayerHealth : Singleton<PlayerHealth>
     }
 
     private void OnCollisionStay2D(Collision2D other) {
-        EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
+       EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
 
-        if (enemy) {
-            TakeDamage(1, other.transform);
-        }
-    }
+       if (enemy) {
+           // --- SỬA DÒNG NÀY ---
+           // Thay số 1 bằng biến touchDamage của con quái
+           TakeDamage(enemy.touchDamage, other.transform); 
+       }
+   }
 
     public void HealPlayer() {
         if (currentHealth < maxHealth) {

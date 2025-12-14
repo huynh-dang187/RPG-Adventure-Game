@@ -1604,6 +1604,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2824740905807928705, guid: 1ce8092dc7c7cb04c8907b4a751b7ec2, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824740905807928705, guid: 1ce8092dc7c7cb04c8907b4a751b7ec2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824740905807928705, guid: 1ce8092dc7c7cb04c8907b4a751b7ec2, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a5727e8cbdd0d24abde020e609c2f60, type: 3}
     - target: {fileID: 7434587262116945248, guid: 1ce8092dc7c7cb04c8907b4a751b7ec2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 724.5815
@@ -3890,11 +3902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6805380794876765508, guid: 2126da85e4efae2419414d9f5a20dca8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.31
+      value: 21.4
       objectReference: {fileID: 0}
     - target: {fileID: 6805380794876765508, guid: 2126da85e4efae2419414d9f5a20dca8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.85085
+      value: -8.6
       objectReference: {fileID: 0}
     - target: {fileID: 6805380794876765508, guid: 2126da85e4efae2419414d9f5a20dca8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6383,7 +6395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6415,26 +6427,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1490320168887585729
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7911584583111588917}
-  - component: {fileID: 7926653561678036390}
-  - component: {fileID: 4157230680922679966}
-  - component: {fileID: 7440949039281106295}
-  - component: {fileID: 5032101575009153736}
-  m_Layer: 5
-  m_Name: UICanvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1001 &2151129030577625046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6527,6 +6519,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalVideoCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9035370133810513595, guid: 693af69e9bc4c9a45a328b0cdc749399, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035370133810513595, guid: 693af69e9bc4c9a45a328b0cdc749399, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035370133810513595, guid: 693af69e9bc4c9a45a328b0cdc749399, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -6594,29 +6598,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211638678722508563}
   m_CullTransparentMesh: 1
---- !u!114 &4157230680922679966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490320168887585729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!1001 &4679913582852058735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7040,20 +7021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineVirtualCamera
---- !u!114 &5032101575009153736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490320168887585729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f1b378695c9cb4489a4668432fe8ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UiFade
-  fadeScreen: {fileID: 198665734022204844}
-  fadeSpeed: 1
 --- !u!1 &7432891236886270133
 GameObject:
   m_ObjectHideFlags: 0
@@ -7071,23 +7038,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7440949039281106295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490320168887585729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1001 &7627614342813999472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7145,48 +7095,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db7763d886fde047ba80eec196c6b68, type: 3}
---- !u!224 &7911584583111588917
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490320168887585729}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!223 &7926653561678036390
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490320168887585729}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1001 &9086645153891802022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7636,8 +7544,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7425514117230863221, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: dashSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425514117230863221, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: moveSpeed
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7425514117230863221, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: weaponCollider
@@ -7660,13 +7572,13 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2151129030577625046}
   - {fileID: 4679913582852058735}
   - {fileID: 619394802}
   - {fileID: 9086645153891802022}
   - {fileID: 815415427}
   - {fileID: 980433947503609290}
   - {fileID: 7627614342813999472}
-  - {fileID: 7911584583111588917}
   - {fileID: 887260538}
   - {fileID: 1561208924}
   - {fileID: 348635533}
@@ -7675,4 +7587,3 @@ SceneRoots:
   - {fileID: 752657118}
   - {fileID: 2023270734}
   - {fileID: 834165208}
-  - {fileID: 2151129030577625046}

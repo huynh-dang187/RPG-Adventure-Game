@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GolemProjectile
   speed: 10
-  damage: 1
+  damage: 15
   lifeTime: 3
 --- !u!95 &3850057598377968993
 Animator:

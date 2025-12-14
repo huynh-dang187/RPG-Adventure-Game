@@ -324,8 +324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   isLocked: 0
-  moveSpeed: 6
-  dashSpeed: 5
+  moveSpeed: 5
+  dashSpeed: 10
   myTrailRenderer: {fileID: 3140844396742059106}
   weaponCollider: {fileID: 6884851627751552349}
 --- !u!210 &5757329385025914128
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
   knockBackThrustAmount: 10
-  damageRecoveryTime: 1
+  damageRecoveryTime: 0.5
 --- !u!114 &4858376666751607962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnController
   spawnVFXPrefab: {fileID: 6903158500699606328, guid: ad9934aeae52be64f8b6293088642d13, type: 3}
   delayBeforeShowingPlayer: 1.2
+  vfxOffset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &6448706547005998555
 GameObject:
   m_ObjectHideFlags: 0

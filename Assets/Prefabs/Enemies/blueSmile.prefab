@@ -179,6 +179,7 @@ MonoBehaviour:
   enemyType: {fileID: 0}
   attackCooldown: 2
   stopMovingWhileAttacking: 0
+  touchDamage: 10
 --- !u!114 &709236242983000899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flash
   whiteFlashMat: {fileID: 2100000, guid: 8f0a3cfeba777db42ac6a6fa526bcbc9, type: 2}
-  restoreDefaultMatTime: 0.2
+  restoreMatTime: 0.2
 --- !u!114 &8974367023869054433
 MonoBehaviour:
   m_ObjectHideFlags: 0

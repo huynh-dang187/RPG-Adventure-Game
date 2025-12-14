@@ -173,6 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94280db70a755024bbdc7fb29f52c705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GolemLaser
-  damage: 2
+  damage: 30
   lifeTime: 1
   knockbackThrust: 40

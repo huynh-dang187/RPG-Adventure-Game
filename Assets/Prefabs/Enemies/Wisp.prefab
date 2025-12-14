@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f05e16232785f34f9c3bcd3ccd61227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wisp_AI
-  moveSpeed: 2
-  damage: 1
+  moveSpeed: 2.5
+  damage: 15
 --- !u!114 &-5810462329892141852
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5811,7 +5811,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: f0acfc9de6c61e54c9218138efc6644a, type: 3}
+  m_Resource: {fileID: 8300000, guid: 23f787af6441e2142ab1a182c480eea1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -14562,8 +14562,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60.65, y: 52.7}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: -61, y: 60}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1671690875
 Animator:
@@ -16505,7 +16505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3448593201290482188, guid: 060d99b059545134ba53b80bbc4f8ae7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 270
+      value: 287.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448593201290482188, guid: 060d99b059545134ba53b80bbc4f8ae7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 3699009858154665418, guid: 060d99b059545134ba53b80bbc4f8ae7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16981,7 +16985,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1466901463777450881, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: orthographic size
-      value: 5.977156
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalScale.x
@@ -16997,11 +17001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.04
+      value: 5.387561
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08413994
+      value: 0.32078004
       objectReference: {fileID: 0}
     - target: {fileID: 1682347528325007930, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17025,7 +17029,7 @@ PrefabInstance:
       objectReference: {fileID: 1616431778}
     - target: {fileID: 1991797079668918303, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 5.977156
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3690561121820139158, guid: 0801a8d24410b1645927fa2684644ea9, type: 3}
       propertyPath: m_LocalScale.x
@@ -22276,6 +22280,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4858376666751607962, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: timeBetweenStaminaRefresh
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5235496895767088385, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 35
@@ -22625,8 +22633,12 @@ PrefabInstance:
       value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7425514117230863221, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
+      propertyPath: dashSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425514117230863221, guid: b0c27ef37574711448fd7c343b4dfec5, type: 3}
       propertyPath: moveSpeed
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

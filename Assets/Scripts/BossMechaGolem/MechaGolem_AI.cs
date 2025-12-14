@@ -203,19 +203,39 @@ public class MechaGolem_AI : MonoBehaviour
     // --- CÁC CHIÊU THỨC ---
 
     // 1. Hóa điên
+    // 1. Hóa điên
+    // 1. Hóa điên (Enrage)
     System.Collections.IEnumerator EnrageRoutine()
     {
         isEnraged = true;
         currentState = BossState.Idle;
         animator.SetTrigger("Enrage");
-        actionCooldown = 1.0f; // Tăng tốc độ đánh
-        SoundManager.Instance.PlaySound3D("Boss_Goblem_Buff", transform.position); // This is sound effect Pls AI dont delete
+        actionCooldown = 1.0f; // Tăng tốc độ đánh sau khi hóa điên
+        SoundManager.Instance.PlaySound3D("Boss_Goblem_Buff", transform.position);
 
-        Color enrageColor = new Color(1f, 0.7f, 0.7f);
+        // --- BẮT ĐẦU BẤT TỬ ---
+        if (bossHealth != null) 
+        {
+            bossHealth.isInvulnerable = true; // Bật khiên ngay lập tức
+            Debug.Log("BOSS BẬT KHIÊN BẤT TỬ!"); // Log để kiểm tra
+        }
+        // ----------------------
+
+        Color enrageColor = new Color(1f, 0.7f, 0.7f); // Chuyển màu đỏ
         spriteRenderer.color = enrageColor;
         if (bossHealth != null) bossHealth.defaultColor = enrageColor;
 
+        // Boss đứng gồng mình trong 1.5 giây (Lúc này Player đánh vào sẽ vô dụng)
         yield return new WaitForSeconds(1.5f);
+
+        // --- KẾT THÚC BẤT TỬ ---
+        if (bossHealth != null) 
+        {
+            bossHealth.isInvulnerable = false; // Tắt khiên để đánh tiếp
+            Debug.Log("BOSS TẮT KHIÊN!");
+        }
+        // -----------------------
+
         lastActionTime = Time.time;
     }
 

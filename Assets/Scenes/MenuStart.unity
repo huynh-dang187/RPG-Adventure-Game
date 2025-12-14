@@ -2885,7 +2885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef7e1cc83a5fc8418b08d2f06a356b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuParallax
-  offsetMultiplier: 20
+  offsetMultiplier: 14
   smoothTime: 0.2
 --- !u!1 &2119222906
 GameObject:

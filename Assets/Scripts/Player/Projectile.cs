@@ -50,40 +50,46 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // 1. NẾU LÀ ĐẠN CỦA PLAYER (Bắn trúng quái)
+        // 1. NẾU LÀ ĐẠN CỦA PLAYER (Bắn trúng quái/Boss)
         if (!isEnemyProjectile) 
         {
-             // Tìm EnemyHealth (Quái thường)
+             // --- BƯỚC 1: TÌM MÁU CỦA QUÁI THƯỜNG ---
              EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-             if(enemyHealth) { 
-                 // Sửa số 1 thành damageAmount
+             if (enemyHealth != null) { 
                  enemyHealth.TakeDamage(damageAmount); 
                  Destroy(gameObject); 
-                 return; // Dừng luôn
+                 return; // Xong việc thì nghỉ
              }
 
-             // Tìm BossHealth (Nếu bắn trúng Boss) - Thêm cái này cho chắc
+             // --- BƯỚC 2: TÌM MÁU CỦA BOSS (QUAN TRỌNG) ---
+             // Thử tìm ngay trên chỗ va chạm
              BossHealth bossHealth = other.GetComponent<BossHealth>();
-             if(bossHealth) {
+             
+             // Nếu không thấy, thử tìm ngược lên CAO HƠN (Object cha)
+             // Lệnh này giúp bắn vào tay chân Boss vẫn dính dame
+             if (bossHealth == null) {
+                 bossHealth = other.GetComponentInParent<BossHealth>();
+             }
+
+             if (bossHealth != null) {
                  bossHealth.TakeDamage(damageAmount, transform);
                  Destroy(gameObject);
                  return;
              }
         }
+        
         // 2. NẾU LÀ ĐẠN CỦA ENEMY (Bắn trúng Player)
         else 
         {
              if (other.CompareTag("Player"))
              {
                  PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-                 // --- SỬA Ở ĐÂY: Thay số 1 thành damageAmount ---
                  if (playerHealth) playerHealth.TakeDamage(damageAmount, transform);
-                 
                  Destroy(gameObject);
              }
         }
 
-        // Xử lý va chạm tường
+        // Xử lý va chạm tường (Trừ khi là Trigger)
         if (!other.isTrigger && (other.CompareTag("Wall") || other.gameObject.layer == LayerMask.NameToLayer("Default")))
         {
             Destroy(gameObject);

@@ -302,8 +302,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0019833916, y: -0.10731436}
-  m_Size: {x: 1.692972, y: 1.0211504}
+  m_Offset: {x: 0.0019833788, y: -0.21468589}
+  m_Size: {x: 1.6929722, y: 0.8064085}
   m_Direction: 1
 --- !u!212 &79609406
 SpriteRenderer:
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18875cb01d2148946a547a05b6574df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransparentDetection
-  transparencyAmount: 0.8
+  transparencyAmount: 0.311
   fadeTime: 0.4
 --- !u!70 &79609408
 CapsuleCollider2D:
@@ -407,7 +407,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -5744,7 +5744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18875cb01d2148946a547a05b6574df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransparentDetection
-  transparencyAmount: 0.8
+  transparencyAmount: 0.311
   fadeTime: 0.4
 --- !u!70 &249049692
 CapsuleCollider2D:
@@ -6054,7 +6054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18875cb01d2148946a547a05b6574df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransparentDetection
-  transparencyAmount: 0.8
+  transparencyAmount: 0.311
   fadeTime: 0.4
 --- !u!70 &324115913
 CapsuleCollider2D:

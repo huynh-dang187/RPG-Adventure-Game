@@ -47,11 +47,16 @@ public class PlayerHealth : Singleton<PlayerHealth>
    }
 
     public void HealPlayer() {
-        if (currentHealth < maxHealth) {
-            currentHealth += 1;
-            UpdateHealthSlider();
-        }
+    // ...
+    if (currentHealth < maxHealth) {
+        currentHealth += 15; // Hồi hẳn 20 máu cho dễ nhìn (hoặc số nào to to tí)
+        // Đảm bảo không vượt quá Max
+        if(currentHealth > maxHealth) currentHealth = maxHealth; 
+        
+        UpdateHealthSlider();
+        Debug.Log($"Đã hồi máu! Máu giờ là: {currentHealth}");
     }
+}
 
     public void TakeDamage(int damageAmount, Transform hitTransform) {
         if (!canTakeDamage) { return; }

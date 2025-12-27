@@ -75,19 +75,20 @@ public class Pickup : MonoBehaviour
     }
 
     private void DetectPickupType() {
-        switch (pickUpType)
-        {
-            case PickUpType.GoldCoin:
-                EconomyManager.Instance.UpdateCurrentGold();
-                
-                break;
-            case PickUpType.HealthGlobe:
-                PlayerHealth.Instance.HealPlayer();
-                
-                break;
-            case PickUpType.StaminaGlobe:
-                Stamina.Instance.RefreshStamina();
-                break;
-        }
+    switch (pickUpType)
+    {
+        case PickUpType.GoldCoin:
+            EconomyManager.Instance.UpdateCurrentGold();
+            break;
+
+        case PickUpType.HealthGlobe:
+            Debug.Log("Đã chạm vào bình máu!"); // Kiểm tra xem dòng này có hiện ko
+            PlayerHealth.Instance.HealPlayer();
+            break;
+
+        case PickUpType.StaminaGlobe:
+            Stamina.Instance.RefreshStamina();
+            break;
     }
+}
 }
